@@ -26,3 +26,16 @@
 *.exe
 *.out
 *.app
+
+# visual studio config file
+*.user
+*.pro.user
+*.sdf
+*.filters
+*.opensdf
+
+# intermedia Files
+debug
+
+# qt project generate for vs
+GeneratedFiles
