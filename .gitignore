@@ -33,6 +33,7 @@
 *.sdf
 *.filters
 *.opensdf
+*.suo
 
 # intermedia Files
 debug
