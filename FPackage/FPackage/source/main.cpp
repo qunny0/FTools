@@ -19,11 +19,16 @@
 // #include <QSlider>
 // #include <QHBoxLayout>
 
+//	35	FileSystem
+#include <QFile>
+#include <QFileInfo>
+#include <QDebug>
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+//     MainWindow w;
+//     w.show();
 
 //  1
 // 	QLabel* label = new QLabel("hello world");
@@ -67,6 +72,27 @@ int main(int argc, char *argv[])
 // 	windows.setLayout(layout);
 // 
 // 	windows.show();
+
+//	35
+	QFile file("C:/Users/cherryxue/Desktop/record.txt");
+	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+		qDebug() << "Open file failed";
+		return -1;
+	}
+	else {
+		while (!file.atEnd())
+		{
+			qDebug() << file.readLine();
+		}
+	}
+
+	QFileInfo fileInfo(file);
+	qDebug() << fileInfo.isDir();
+	qDebug() << fileInfo.isExecutable();
+	qDebug() << fileInfo.baseName();
+	qDebug() << fileInfo.completeBaseName();
+	qDebug() << fileInfo.suffix();
+	qDebug() << fileInfo.completeSuffix();
 
     return a.exec();	
 }
