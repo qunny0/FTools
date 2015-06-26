@@ -68,11 +68,17 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionOpen"/>
    <addaction name="actionNew"/>
-   <addaction name="aboutAction"/>
+   <addaction name="actionSave"/>
+   <addaction name="actionAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="aboutAction">
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/about</normaloff>:/images/about</iconset>
+   </property>
    <property name="text">
     <string>About</string>
    </property>
@@ -88,8 +94,8 @@
   </action>
   <action name="actionNew">
    <property name="icon">
-    <iconset resource="../resource/res.qrc">
-     <normaloff>:/images/doc-open</normaloff>:/images/doc-open</iconset>
+    <iconset>
+     <normaloff>:/images/doc-new</normaloff>:/images/doc-new</iconset>
    </property>
    <property name="text">
     <string>New</string>
@@ -99,6 +105,36 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/doc-open</normaloff>:/images/doc-open</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+   <property name="toolTip">
+    <string>Open File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/doc-save-as</normaloff>:/images/doc-save-as</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save File...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
  </widget>

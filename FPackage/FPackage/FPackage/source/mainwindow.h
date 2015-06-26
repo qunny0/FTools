@@ -21,6 +21,12 @@ protected:
 
 	void about();
 
+	void openFile();
+
+	void saveFile();
+
+	void newFile();
+
 private:
     Ui::MainWindow *ui;
 // 

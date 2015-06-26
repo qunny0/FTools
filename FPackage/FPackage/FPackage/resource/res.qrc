@@ -2,5 +2,7 @@
     <qresource prefix="/images">
         <file alias="doc-open">image/document-open.png</file>
         <file alias="doc-save-as">image/document-save-as.png</file>
+        <file alias="doc-new">image/document_new.png</file>
+        <file alias="about">image/about.png</file>
     </qresource>
 </RCC>

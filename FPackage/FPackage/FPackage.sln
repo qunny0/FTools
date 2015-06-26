@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FPackage", "FPackage.vcxproj", "{CCFEBAD7-5592-327E-8C29-30D0C58C6D69}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FPackage", "FPackage\FPackage.vcxproj", "{CCFEBAD7-5592-327E-8C29-30D0C58C6D69}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FPackageCorLib", "FPackageCorLib\FPackageCorLib.vcxproj", "{CDB5B0FE-5011-4D4D-B8B8-4EC4A026E085}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{CCFEBAD7-5592-327E-8C29-30D0C58C6D69}.Debug|Win32.Build.0 = Debug|Win32
 		{CCFEBAD7-5592-327E-8C29-30D0C58C6D69}.Release|Win32.ActiveCfg = Release|Win32
 		{CCFEBAD7-5592-327E-8C29-30D0C58C6D69}.Release|Win32.Build.0 = Release|Win32
+		{CDB5B0FE-5011-4D4D-B8B8-4EC4A026E085}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CDB5B0FE-5011-4D4D-B8B8-4EC4A026E085}.Debug|Win32.Build.0 = Debug|Win32
+		{CDB5B0FE-5011-4D4D-B8B8-4EC4A026E085}.Release|Win32.ActiveCfg = Release|Win32
+		{CDB5B0FE-5011-4D4D-B8B8-4EC4A026E085}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
