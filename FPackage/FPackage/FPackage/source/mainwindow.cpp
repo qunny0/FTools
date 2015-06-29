@@ -3,6 +3,7 @@
 
 #include <QMessageBox>
 #include <QDebug>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -47,5 +48,23 @@ void MainWindow::saveFile()
 
 void MainWindow::newFile()
 {
-	qDebug() << "new";
+// 	qDebug() << "new";
+	QFileDialog* fileDialog = new QFileDialog(this);
+	fileDialog->setWindowTitle(tr("create new package"));
+	fileDialog->setAcceptMode(QFileDialog::AcceptSave);
+	fileDialog->setFileMode(QFileDialog::AnyFile);
+
+// 	fileDialog->setViewMode(QFileDialog::Detail);
+	fileDialog->setViewMode(QFileDialog::List);
+
+	fileDialog->setDirectory(".");
+// 	fileDialog->setFilter(tr("Image Files(*.jpg *.png)"));
+	if (fileDialog->exec() == QDialog::Accepted)
+	{
+		QString path = fileDialog->selectedFiles()[0];
+	}
 }
+
+
+
+
