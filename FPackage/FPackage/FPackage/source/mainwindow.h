@@ -29,9 +29,6 @@ protected:
 
 private:
     Ui::MainWindow *ui;
-// 
-// private:
-// 	QAction*		_pAboutAction;
 };
 
 #endif // MAINWINDOW_H

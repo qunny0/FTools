@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>FPackage</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../resource/res.qrc">
+    <normaloff>:/images/pack-icon</normaloff>:/images/pack-icon</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
@@ -57,7 +61,7 @@
      <x>0</x>
      <y>0</y>
      <width>960</width>
-     <height>17</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
@@ -76,7 +80,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout">
    <property name="icon">
-    <iconset>
+    <iconset resource="../resource/res.qrc">
      <normaloff>:/images/about</normaloff>:/images/about</iconset>
    </property>
    <property name="text">
@@ -94,7 +98,7 @@
   </action>
   <action name="actionNew">
    <property name="icon">
-    <iconset>
+    <iconset resource="../resource/res.qrc">
      <normaloff>:/images/doc-new</normaloff>:/images/doc-new</iconset>
    </property>
    <property name="text">
@@ -109,7 +113,7 @@
   </action>
   <action name="actionOpen">
    <property name="icon">
-    <iconset>
+    <iconset resource="../resource/res.qrc">
      <normaloff>:/images/doc-open</normaloff>:/images/doc-open</iconset>
    </property>
    <property name="text">
@@ -124,7 +128,7 @@
   </action>
   <action name="actionSave">
    <property name="icon">
-    <iconset>
+    <iconset resource="../resource/res.qrc">
      <normaloff>:/images/doc-save-as</normaloff>:/images/doc-save-as</iconset>
    </property>
    <property name="text">

@@ -6,3 +6,12 @@
 
 #define USING_NS_FPACKAGE using namespace F_PACKAGE
 #define NS_FPACKAGE	F_PACKAGE::
+
+
+
+#pragma pack(4)
+
+
+
+#pragma pack()
+

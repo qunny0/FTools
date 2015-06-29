@@ -12,7 +12,6 @@ class IWriteFile;
 class IFPackage
 {
 public:
-	
 	virtual std::string& getPackageName() const = 0;
 
 	// readFile
@@ -21,7 +20,6 @@ public:
 
 	// writeFile
 	virtual uint32_t getFileCount() = 0;
-
 };
 
 
