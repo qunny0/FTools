@@ -31,13 +31,15 @@
 *.user
 *.pro.user
 *.sdf
-*.filters
 *.opensdf
 *.suo
 
 # intermedia Files
 debug
 intermediate
+
+# Output Files
+Run
 
 # qt project generate for vs
 GeneratedFiles

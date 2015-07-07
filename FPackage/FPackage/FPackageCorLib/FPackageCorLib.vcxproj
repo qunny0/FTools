@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>..\FPackageCommon\zlib;$(IncludePath)</IncludePath>
-    <IntDir>$(SolutionDir)\Intermediate\$(ProjectName)</IntDir>
-    <OutDir>$(Platform)\$(Configuration)</OutDir>
+    <IntDir>$(SolutionDir)Run\Intermediate\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)Run\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>..\FPackageCommon\zlib;$(IncludePath)</IncludePath>

@@ -27,6 +27,8 @@ protected:
 
 	void newFile();
 
+	void createNewPackage(const QString& path);
+
 private:
     Ui::MainWindow *ui;
 };

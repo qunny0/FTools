@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QFileDialog>
 
+#include "FPackageCore.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
 	ui(new Ui::MainWindow)
@@ -48,13 +50,11 @@ void MainWindow::saveFile()
 
 void MainWindow::newFile()
 {
-// 	qDebug() << "new";
 	QFileDialog* fileDialog = new QFileDialog(this);
 	fileDialog->setWindowTitle(tr("create new package"));
 	fileDialog->setAcceptMode(QFileDialog::AcceptSave);
 	fileDialog->setFileMode(QFileDialog::AnyFile);
 
-// 	fileDialog->setViewMode(QFileDialog::Detail);
 	fileDialog->setViewMode(QFileDialog::List);
 
 	fileDialog->setDirectory(".");
@@ -62,9 +62,15 @@ void MainWindow::newFile()
 	if (fileDialog->exec() == QDialog::Accepted)
 	{
 		QString path = fileDialog->selectedFiles()[0];
+
+		createNewPackage(path);
 	}
 }
 
+void MainWindow::createNewPackage(const QString& path)
+{
+	auto strPath = path.toStdString();
 
-
+	F_PACKAGE::createFPackage(strPath);
+}
 
