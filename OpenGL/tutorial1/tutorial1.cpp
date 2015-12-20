@@ -1,3 +1,5 @@
+// Open a window
+
 #include "glut.h"
 #include <stdio.h>
 
@@ -7,7 +9,7 @@ void RenderScene(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 	glutSwapBuffers();
 
-//  	glFlush();
+// glFlush();
 
 	printf("RenderScene\n");
 }
@@ -19,12 +21,12 @@ int main(int argc, char* argv[])
 
 	glutInitWindowSize(1024, 768);
 	glutInitWindowPosition(200, 200);
-	glutCreateWindow("tutorial 01");
+	glutCreateWindow("Open a window");
 
 	glutDisplayFunc(RenderScene);
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glutMainLoop();
+ 	glutMainLoop();
 
 	return 0;
 }
