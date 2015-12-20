@@ -52,9 +52,8 @@ void MainWindow::newFile()
 {
 	QFileDialog* fileDialog = new QFileDialog(this);
 	fileDialog->setWindowTitle(tr("create new package"));
-	fileDialog->setAcceptMode(QFileDialog::AcceptSave);
-	fileDialog->setFileMode(QFileDialog::AnyFile);
-
+// 	fileDialog->setAcceptMode(QFileDialog::AcceptSave);
+// 	fileDialog->setFileMode(QFileDialog::AnyFile);
 	fileDialog->setViewMode(QFileDialog::List);
 
 	fileDialog->setDirectory(".");
@@ -69,6 +68,8 @@ void MainWindow::newFile()
 
 void MainWindow::createNewPackage(const QString& path)
 {
+	// 对路径进行处理，得到一个zpk的路径
+
 	auto strPath = path.toStdString();
 
 	F_PACKAGE::createFPackage(strPath);
