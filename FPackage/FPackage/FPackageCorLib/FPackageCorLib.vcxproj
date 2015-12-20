@@ -14,6 +14,7 @@
     <ProjectGuid>{CDB5B0FE-5011-4D4D-B8B8-4EC4A026E085}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>FPackageCorLib</RootNamespace>
+    <ProjectName>FPackageCoreLib</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -53,7 +54,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -92,9 +93,11 @@
     <ClCompile Include="..\FPackageCommon\zlib\trees.c" />
     <ClCompile Include="..\FPackageCommon\zlib\uncompr.c" />
     <ClCompile Include="..\FPackageCommon\zlib\zutil.c" />
+    <ClCompile Include="source\FPackage.cpp" />
     <ClCompile Include="source\FPackageCore.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\FPackage.h" />
     <ClInclude Include="source\FPackageCore.h" />
     <ClInclude Include="source\FPackageDefine.h" />
   </ItemGroup>

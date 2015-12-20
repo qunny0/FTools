@@ -37,12 +37,18 @@
     <ClCompile Include="source\FPackageCore.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="source\FPackage.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\FPackageCore.h">
       <Filter>source</Filter>
     </ClInclude>
     <ClInclude Include="source\FPackageDefine.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FPackage.h">
       <Filter>source</Filter>
     </ClInclude>
   </ItemGroup>

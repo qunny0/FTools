@@ -2,6 +2,7 @@
 #include "FPackageDefine.h"
 
 #include <string>
+#include <vector>
 #include <stdint.h>
 
 NS_FPACKAGE_BEGIN
@@ -12,14 +13,21 @@ class IWriteFile;
 class IFPackage
 {
 public:
-	virtual std::string& getPackageName() const = 0;
+	virtual const std::string& getPackageName() const = 0;
 
 	// readFile
 	virtual bool hasFile(const std::string& filename) const = 0;
-	virtual IReadFile* openFile(const std::string& filename) const = 0;
+	virtual IReadFile* openFile(const std::string& filename) = 0;
 
 	// writeFile
-	virtual uint32_t getFileCount() = 0;
+	virtual uint32_t getFileCount() const = 0;
+
+	virtual void addFile(const std::string& relativeFilePath) = 0;
+
+	virtual void readFileDataToPackage(const std::string& absoluteFilePath) = 0;
+
+protected:
+	std::string		_strPackageName;
 };
 
 
@@ -27,5 +35,7 @@ public:
 //////////////////////////////////////////////////////////////////////////
 
 IFPackage*	createFPackage(const std::string& filename, uint32_t chunkSize = 0x40000, uint32_t fileUserDataSize = 0);
+
+IFPackage*	openFPackage(const std::string& packagePath);
 
 NS_FPACKAGE_END

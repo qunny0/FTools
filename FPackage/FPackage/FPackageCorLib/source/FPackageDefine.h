@@ -1,6 +1,7 @@
 #pragma once
 #include <stdint.h>
 
+
 // namespace
 #define NS_FPACKAGE_BEGIN namespace F_PACKAGE {
 #define NS_FPACKAGE_END	}
