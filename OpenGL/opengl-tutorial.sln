@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial1", "tutorial1\tuto
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial2", "tutorial2\tutorial2.vcxproj", "{A6124072-473E-4C07-843A-169C21C82C0E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "opengl-support", "opengl-support\opengl-support.vcxproj", "{E06B91E3-4828-4660-9354-3DDB3319AA83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -39,6 +41,16 @@ Global
 		{A6124072-473E-4C07-843A-169C21C82C0E}.Release|Win32.ActiveCfg = Release|Win32
 		{A6124072-473E-4C07-843A-169C21C82C0E}.Release|Win32.Build.0 = Release|Win32
 		{A6124072-473E-4C07-843A-169C21C82C0E}.Release|x64.ActiveCfg = Release|Win32
+		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Debug|Win32.Build.0 = Debug|Win32
+		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Debug|x64.ActiveCfg = Debug|Win32
+		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Release|Win32.ActiveCfg = Release|Win32
+		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Release|Win32.Build.0 = Release|Win32
+		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
