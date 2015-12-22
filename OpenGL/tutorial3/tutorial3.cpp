@@ -1,23 +1,20 @@
-// Hello dot
-
 #include "glew.h"
-#include "math_3d.h"
 #include "glut.h"
+#include "math_3d.h"
 #include <stdio.h>
 
-GLuint VBO;  // store the handle of the vertex buffer object
+GLuint VBO;
 
-void RenderSceneCB(void)
+static void RenderSceneCB()
 {
-	//clear the window use the current color
 	glClear(GL_COLOR_BUFFER_BIT);
-	
+
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-	glDrawArrays(GL_POINTS, 0, 1);
-	
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+
 	glDisableVertexAttribArray(0);
 
 	glutSwapBuffers();
@@ -30,8 +27,10 @@ static void InitializeGlutCallbacks()
 
 static void CreateVertexBuffer()
 {
-	Vector3f Vertices[1];
-	Vertices[0] = Vector3f(0.0f, 0.0f, 0.0f);
+	Vector3f Vertices[3] = {};
+	Vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f);
+	Vertices[1] = Vector3f(1.0f, -1.0f, 0.0f);
+	Vertices[2] = Vector3f(0.0f, 1.0f, 0.0f);
 
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -41,18 +40,17 @@ static void CreateVertexBuffer()
 int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA);
-	glutInitWindowSize(1024, 768);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+	glutInitWindowSize(1024, 760);
 	glutInitWindowPosition(200, 200);
-	glutCreateWindow("Hello dot");
+	glutCreateWindow("First Triangle");
 
 	InitializeGlutCallbacks();
 
-	// Must be done after glut is initialized!
 	GLenum res = glewInit();
 	if (res != GLEW_OK)
 	{
-		fprintf(stderr, "Error : '%s'\n", glewGetErrorString(res));
+		fprintf(stderr, "Error: '%s' \n", glewGetErrorString(res));
 		return 1;
 	}
 

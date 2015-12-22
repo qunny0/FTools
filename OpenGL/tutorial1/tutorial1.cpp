@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
 	glutInitWindowPosition(200, 200);
 	glutCreateWindow("Open a window");
 
-	openglCheck();
+// 	openglCheck();
 
 	glutDisplayFunc(RenderScene);
 

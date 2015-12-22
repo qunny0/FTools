@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial2", "tutorial2\tuto
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "opengl-support", "opengl-support\opengl-support.vcxproj", "{E06B91E3-4828-4660-9354-3DDB3319AA83}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial3", "tutorial3\tutorial3.vcxproj", "{0A261EBD-E103-4BF3-9D6A-B9B6A3AEDA42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -51,6 +53,16 @@ Global
 		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Release|Win32.ActiveCfg = Release|Win32
 		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Release|Win32.Build.0 = Release|Win32
 		{E06B91E3-4828-4660-9354-3DDB3319AA83}.Release|x64.ActiveCfg = Release|Win32
+		{0A261EBD-E103-4BF3-9D6A-B9B6A3AEDA42}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{0A261EBD-E103-4BF3-9D6A-B9B6A3AEDA42}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{0A261EBD-E103-4BF3-9D6A-B9B6A3AEDA42}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0A261EBD-E103-4BF3-9D6A-B9B6A3AEDA42}.Debug|Win32.Build.0 = Debug|Win32
+		{0A261EBD-E103-4BF3-9D6A-B9B6A3AEDA42}.Debug|x64.ActiveCfg = Debug|Win32
+		{0A261EBD-E103-4BF3-9D6A-B9B6A3AEDA42}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{0A261EBD-E103-4BF3-9D6A-B9B6A3AEDA42}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{0A261EBD-E103-4BF3-9D6A-B9B6A3AEDA42}.Release|Win32.ActiveCfg = Release|Win32
+		{0A261EBD-E103-4BF3-9D6A-B9B6A3AEDA42}.Release|Win32.Build.0 = Release|Win32
+		{0A261EBD-E103-4BF3-9D6A-B9B6A3AEDA42}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
