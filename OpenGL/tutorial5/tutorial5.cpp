@@ -8,6 +8,15 @@
 #include "math_3d.h"
 #include "opengl_util.h"
 
+/************************************************************************/
+/*	
+	gScaleLocation = glGetUniformLocation(ShaderProgram, "gScale");
+	assert(gScaleLocation != 0xFFFFFFFF);
+	glUniform1f(gScaleLocation, sinf(Scale));
+
+*/
+/************************************************************************/
+
 GLuint VBO;
 GLuint gScaleLocation;
 
@@ -19,24 +28,16 @@ static void RenderSceneCB()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	static float Scale = 0.0f;
-	Scale += 0.001f;
+	Scale += 0.01f;
 	glUniform1f(gScaleLocation, sinf(Scale));
 
 	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-
+		glBindBuffer(GL_ARRAY_BUFFER, VBO);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDisableVertexAttribArray(0);
 
 	glutSwapBuffers();
-}
-
-static void InitializeGlutCallbacks()
-{
- 	glutDisplayFunc(RenderSceneCB);
-	glutIdleFunc(RenderSceneCB);
 }
 
 static void CreateVertexBuffer()
@@ -81,6 +82,8 @@ static void AddShader(GLuint ShaderProgram, const char* pShaderText, GLenum Shad
 	glAttachShader(ShaderProgram, ShaderObj);
 }
 
+#define READ_FILE(filename, data) if (!ReadFile(filename, data)) exit(1);
+
 static void CompileShaders()
 {
 	GLuint ShaderProgram = glCreateProgram();
@@ -93,14 +96,8 @@ static void CompileShaders()
 
 	string vs, fs;
 
-	if (!ReadFile(pVSFileName, vs))
-	{
-		exit(1);
-	}
-	if (!ReadFile(pFSFileName, fs))
-	{
-		exit(1);
-	}
+	READ_FILE(pVSFileName, vs);
+	READ_FILE(pFSFileName, fs);
 
 	AddShader(ShaderProgram, vs.c_str(), GL_VERTEX_SHADER);
 	AddShader(ShaderProgram, fs.c_str(), GL_FRAGMENT_SHADER);
@@ -132,6 +129,12 @@ static void CompileShaders()
 	assert(gScaleLocation != 0xFFFFFFFF);
 }
 
+static void InitializeGlutCallbacks()
+{
+	glutDisplayFunc(RenderSceneCB);
+	glutIdleFunc(RenderSceneCB);
+}
+
 int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
@@ -140,8 +143,6 @@ int main(int argc, char* argv[])
 	glutInitWindowPosition(200, 200);
 	glutCreateWindow("Uniform Variables");
 
-	InitializeGlutCallbacks();
-
 	// Must be done after glut is initialized!
 	GLenum res = glewInit();
 	if (res != GLEW_OK)
@@ -149,8 +150,9 @@ int main(int argc, char* argv[])
 		fprintf(stderr, "Error: '%s' \n", glewGetErrorString(res));
 		return 1;
 	}
-
 	printf("GL version: %s\n", glGetString(GL_VERSION));
+
+	InitializeGlutCallbacks();
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 

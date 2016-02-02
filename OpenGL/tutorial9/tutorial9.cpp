@@ -17,7 +17,7 @@ static void RenderSceneCB()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	static float Scale = 0.0f;
-	Scale += 0.001f;
+	Scale += 0.01f;
 	Matrix4f World;
 
 	World.m[0][0] = sinf(Scale); World.m[0][1] = 0; World.m[0][2] = 0; World.m[0][3] = 0.0f;
@@ -26,7 +26,6 @@ static void RenderSceneCB()
 	World.m[3][0] = 0; World.m[3][1] = 0; World.m[3][2] = 0; World.m[3][3] = 1.0f;
 
 	glUniformMatrix4fv(gWorldLocation, 1, GL_TRUE, &World.m[0][0]);
-
 
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);

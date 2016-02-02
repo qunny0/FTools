@@ -8,6 +8,18 @@
 #include <string.h>
 #include <math.h>
 
+/************************************************************************/
+/*	cos(a+b) = cos(a)cos(b) - sin(a)sin(b)
+	sin(a+b) = sin(a)cos(b) + cos(a)sin(b)
+	
+	ÈÆZÖá£¬ÄæÊ±ÕëÐý×ª½Ç¶Èa
+	cos(a), -sin(a),	0,	0
+	sin(a), cos(a),		0,	0
+	0,		0,			1,	0
+	0,		0,			0,	1
+*/
+/************************************************************************/
+
 GLuint VBO;
 GLuint gWorldLocation;
 
@@ -31,20 +43,12 @@ static void RenderSceneCB()
 	glUniformMatrix4fv(gWorldLocation, 1, GL_TRUE, &World.m[0][0]);
 
 	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-
+		glBindBuffer(GL_ARRAY_BUFFER, VBO);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDisableVertexAttribArray(0);
 
 	glutSwapBuffers();
-}
-
-static void InitializeGlutCallbacks()
-{
-	glutDisplayFunc(RenderSceneCB);
-	glutIdleFunc(RenderSceneCB);
 }
 
 static void CreateVertexBuffer()
@@ -138,15 +142,19 @@ static void CompileShaders()
 	assert(gWorldLocation != 0xFFFFFFFF);
 }
 
+static void InitializeGlutCallbacks()
+{
+	glutDisplayFunc(RenderSceneCB);
+	glutIdleFunc(RenderSceneCB);
+}
+
 int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowSize(500, 500);
+	glutInitWindowSize(1024, 768);
 	glutInitWindowPosition(200, 200);
 	glutCreateWindow("Rotation Transformation");
-
-	InitializeGlutCallbacks();
 
 	GLenum res = glewInit();
 	if (res != GLEW_OK)
@@ -154,8 +162,9 @@ int main(int argc, char* argv[])
 		fprintf(stderr, "Error: '%s' \n", glewGetErrorString(res));
 		return 1;
 	}
-
 	printf("GL Version: %s\n", glGetString(GL_VERSION));
+
+	InitializeGlutCallbacks();
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 

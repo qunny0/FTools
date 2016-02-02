@@ -19,7 +19,7 @@ static void RenderSceneCB()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	static float Scale = 0.0f;
-	Scale += 0.001f;
+	Scale += 0.01f;
 
 	Matrix4f World;
 
@@ -142,11 +142,9 @@ int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowSize(500, 500);
+	glutInitWindowSize(1024, 768);
 	glutInitWindowPosition(200, 200);
 	glutCreateWindow("Rotation Transformation");
-
-	InitializeGlutCallbacks();
 
 	GLenum res = glewInit();
 	if (res != GLEW_OK)
@@ -154,8 +152,9 @@ int main(int argc, char* argv[])
 		fprintf(stderr, "Error: '%s' \n", glewGetErrorString(res));
 		return 1;
 	}
-
 	printf("GL Version: %s\n", glGetString(GL_VERSION));
+
+	InitializeGlutCallbacks();
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 

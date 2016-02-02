@@ -8,6 +8,23 @@
 #include <string.h>
 #include <math.h>
 
+/************************************************************************/
+/* 
+	matrix4f 行主序 , OpenGL使用列主序.
+
+	void glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
+	This is another example of a glUniform* function to load data into shader variables.
+	This specific function loads 4*4 matrices and there are also verions for 2*2, 3*3, 3*2, 2*4, 4*2, 3*4 and 4*2. 
+	The first parameter is the location of the uniform variable (retrieved after shader compilation using glGetUniformLocation()).
+	The second parameter indicates the number of matrices we are updating. We use 1 for one matrix but we can also using this function
+	to update multiply matrices in once call.
+	The third parameter often confuse newcomers. It indicates whether the matrix is supplied in row-major or column-major order.
+	Row-major means the matrix is supplied row after row, starting from the top. Column-major is the same but in columns. The point is 
+	that C/C++ are row-major languages by default. This means that when you populate a two dimentional array with values they are laid out
+	in memory row after row with the 'top' row ath the lower address. 
+*/
+/************************************************************************/
+
 GLuint VBO;
 GLuint gWorldLocation;
 
@@ -19,7 +36,7 @@ static void RenderSceneCB()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	static float Scale = 0.0f;
-	Scale += 0.001f;
+	Scale += 0.01f;
 
 	Matrix4f World;
 
