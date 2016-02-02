@@ -144,7 +144,7 @@ int main(int argc, char* argv[])
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize(1024, 768);
 	glutInitWindowPosition(200, 200);
-	glutCreateWindow("04 - shaders");
+	glutCreateWindow("09 - Interpolation");
 
 	InitializeGlutCallbacks();
 
