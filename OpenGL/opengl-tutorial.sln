@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial8", "tutorial8\tuto
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial9", "tutorial9\tutorial9.vcxproj", "{D4972DCC-8E72-404C-826D-020161825594}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial10-Indexed_Draws", "tutorial10-Indexed_Draws\tutorial10-Indexed_Draws.vcxproj", "{A844F68F-2156-43FE-A87C-018612444194}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -135,6 +137,16 @@ Global
 		{D4972DCC-8E72-404C-826D-020161825594}.Release|Win32.ActiveCfg = Release|Win32
 		{D4972DCC-8E72-404C-826D-020161825594}.Release|Win32.Build.0 = Release|Win32
 		{D4972DCC-8E72-404C-826D-020161825594}.Release|x64.ActiveCfg = Release|Win32
+		{A844F68F-2156-43FE-A87C-018612444194}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{A844F68F-2156-43FE-A87C-018612444194}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{A844F68F-2156-43FE-A87C-018612444194}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A844F68F-2156-43FE-A87C-018612444194}.Debug|Win32.Build.0 = Debug|Win32
+		{A844F68F-2156-43FE-A87C-018612444194}.Debug|x64.ActiveCfg = Debug|Win32
+		{A844F68F-2156-43FE-A87C-018612444194}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{A844F68F-2156-43FE-A87C-018612444194}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{A844F68F-2156-43FE-A87C-018612444194}.Release|Win32.ActiveCfg = Release|Win32
+		{A844F68F-2156-43FE-A87C-018612444194}.Release|Win32.Build.0 = Release|Win32
+		{A844F68F-2156-43FE-A87C-018612444194}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

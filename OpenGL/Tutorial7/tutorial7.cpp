@@ -31,7 +31,7 @@ static void RenderSceneCB()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	static float Scale = 0.0f;
-	Scale += 0.001f;
+	Scale += 0.01f;
 
 	Matrix4f World;
 
