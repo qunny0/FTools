@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial9", "tutorial9\tuto
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial10-Indexed_Draws", "tutorial10-Indexed_Draws\tutorial10-Indexed_Draws.vcxproj", "{A844F68F-2156-43FE-A87C-018612444194}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial11-Concatenating-Transformations", "tutorial11-Concatenating-Transformations\tutorial11-Concatenating-Transformations.vcxproj", "{56D35D76-A1AF-4DB3-A593-ECBB1A626FE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -147,6 +149,16 @@ Global
 		{A844F68F-2156-43FE-A87C-018612444194}.Release|Win32.ActiveCfg = Release|Win32
 		{A844F68F-2156-43FE-A87C-018612444194}.Release|Win32.Build.0 = Release|Win32
 		{A844F68F-2156-43FE-A87C-018612444194}.Release|x64.ActiveCfg = Release|Win32
+		{56D35D76-A1AF-4DB3-A593-ECBB1A626FE4}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{56D35D76-A1AF-4DB3-A593-ECBB1A626FE4}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{56D35D76-A1AF-4DB3-A593-ECBB1A626FE4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{56D35D76-A1AF-4DB3-A593-ECBB1A626FE4}.Debug|Win32.Build.0 = Debug|Win32
+		{56D35D76-A1AF-4DB3-A593-ECBB1A626FE4}.Debug|x64.ActiveCfg = Debug|Win32
+		{56D35D76-A1AF-4DB3-A593-ECBB1A626FE4}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{56D35D76-A1AF-4DB3-A593-ECBB1A626FE4}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{56D35D76-A1AF-4DB3-A593-ECBB1A626FE4}.Release|Win32.ActiveCfg = Release|Win32
+		{56D35D76-A1AF-4DB3-A593-ECBB1A626FE4}.Release|Win32.Build.0 = Release|Win32
+		{56D35D76-A1AF-4DB3-A593-ECBB1A626FE4}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

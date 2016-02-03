@@ -6,6 +6,22 @@
 #include <assert.h>
 using namespace std;
 
+/************************************************************************/
+/*	
+	glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
+	We use glDrawElements instead of glDrawArrays. 
+	The first parameter is the primitive type to render (same as glDrawArray).
+	The second parameter is the number of indices in the index buffer to use for primitive generation.
+	The next parameter is the type of each index. The GPU must be told the size of each individual index else it will not know
+	how to parse the buffer. Possible value here are GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, GL_UNSIGNED_INT. If the index range is 
+	small you want the smaller types that are more space efficient and if the index range is large you want the larger types.
+	The final parameter tells the GPU the offset in bytes from the start of the index buffer to the location of the first index to scan.
+	This is useful when the same index buffer contains the indices of multiple objects. By specifying the offset and count you canl tell
+	the GPU which object to render. In our case we want to start at the beginning so we specify zero.
+	Note that the type of the last parameter is GLvoid* so if you specify anything other than zero you need to cast it to that type.
+*/
+/************************************************************************/
+
 const char* pVSShader = "shader.vs";
 const char* pFSShader = "shader.fs";
 
