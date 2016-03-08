@@ -1,0 +1,15 @@
+http://ogldev.atspace.co.uk/www/tutorial13/tutorial13.html
+
+Background
+In the last several tutorials we saw two types of transformations.
+The first type were transformations that change the position (translation), orientation (rotation) or size (scaling) of an object.
+These transformation allow us to place an object anywhere within the 3D world.
+The second type was the perspective projection transformation that takes the position of a vertex in the 3D world and projects it into
+a 2D world(i.e. a plane).
+Once the coordinates are in 2D it is very easy to map them to screen space coordinates. These coordinates are used to actually rasterize 
+the primitives from which the object is composed (be it points, lines or triangles).
+
+The missing piece of the puzzle is the location of the camera. In all the previous tutorials we implicitly assumed that the camera is 
+convenietly located of the origin of the 3D space. In really, we want to have the freedom to place the camera anywhere in the world and 
+project the vertices into some 2D place infront of it. This will reflect the correct relation between the camera and the object on screen.
+

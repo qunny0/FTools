@@ -29,6 +29,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial11-Concatenating-Tr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial12-Perspective-Projection", "tutorial12-Perspective-Projection\tutorial12-Perspective-Projection.vcxproj", "{7B0D9565-82B9-4534-9BFD-A8FDA2F82AC9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial13-Camera-Space", "tutorial13-Camera-Space\tutorial13-Camera-Space.vcxproj", "{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -171,6 +173,16 @@ Global
 		{7B0D9565-82B9-4534-9BFD-A8FDA2F82AC9}.Release|Win32.ActiveCfg = Release|Win32
 		{7B0D9565-82B9-4534-9BFD-A8FDA2F82AC9}.Release|Win32.Build.0 = Release|Win32
 		{7B0D9565-82B9-4534-9BFD-A8FDA2F82AC9}.Release|x64.ActiveCfg = Release|Win32
+		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Debug|Win32.Build.0 = Debug|Win32
+		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Debug|x64.ActiveCfg = Debug|Win32
+		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Release|Win32.ActiveCfg = Release|Win32
+		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Release|Win32.Build.0 = Release|Win32
+		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,9 +15,6 @@
 	2.The vertical field of view: the vertical angle of the camera through which we are looking at the world.
 	3.The location of the near Z plane. This allows us to clip objects that are too close to the camera.
 	4.The location of the far Z plane. This allows us to clip objects that are too distance from the camera.
-
-
-
 */
 /************************************************************************/
 
