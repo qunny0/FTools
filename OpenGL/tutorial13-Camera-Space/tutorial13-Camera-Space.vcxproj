@@ -81,6 +81,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\common\src\camera.cpp" />
     <ClCompile Include="..\common\src\math_3d.cpp" />
     <ClCompile Include="..\common\src\opengl_util.cpp" />
     <ClCompile Include="..\common\src\pipeline.cpp" />
@@ -88,6 +89,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="tutorial.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shader.fs" />
+    <None Include="Shader.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
