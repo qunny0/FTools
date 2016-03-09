@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial12-Perspective-Proj
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial13-Camera-Space", "tutorial13-Camera-Space\tutorial13-Camera-Space.vcxproj", "{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial14-Camera-Control-Part1", "tutorial14-Camera-Control-Part1\tutorial14-Camera-Control-Part1.vcxproj", "{7E437206-7611-4463-BF6D-E7DAA39ED270}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -183,6 +185,16 @@ Global
 		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Release|Win32.ActiveCfg = Release|Win32
 		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Release|Win32.Build.0 = Release|Win32
 		{5D61AC4D-C6F6-485C-9992-C4F4D7659AB5}.Release|x64.ActiveCfg = Release|Win32
+		{7E437206-7611-4463-BF6D-E7DAA39ED270}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{7E437206-7611-4463-BF6D-E7DAA39ED270}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{7E437206-7611-4463-BF6D-E7DAA39ED270}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7E437206-7611-4463-BF6D-E7DAA39ED270}.Debug|Win32.Build.0 = Debug|Win32
+		{7E437206-7611-4463-BF6D-E7DAA39ED270}.Debug|x64.ActiveCfg = Debug|Win32
+		{7E437206-7611-4463-BF6D-E7DAA39ED270}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{7E437206-7611-4463-BF6D-E7DAA39ED270}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{7E437206-7611-4463-BF6D-E7DAA39ED270}.Release|Win32.ActiveCfg = Release|Win32
+		{7E437206-7611-4463-BF6D-E7DAA39ED270}.Release|Win32.Build.0 = Release|Win32
+		{7E437206-7611-4463-BF6D-E7DAA39ED270}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
