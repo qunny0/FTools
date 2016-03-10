@@ -21,6 +21,18 @@
 	the texel location will be (160,20) (0.5*320=160 and 0.1*200=20).
 
 
+	glTexParameterf(m_textureTarget, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameterf(m_textureTarget, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	The general function glTexParameterf control many aspects of the texture sampling operation. 
+	These aspects are part of the texture sampling state. 
+	Here we specify the filter to be used for magnification and minification. 
+	Every texture has a given width and height dimensions but rarely it is applied to a triangle of the same proportion. 
+	In most case the triangle is either smaller or larger than the texture. 
+	In this case the filter type determines how to handle the case of magnifying or minifying the texture to match the proportion of the triangle. 
+	When the rasterized triangle is larger than the texture (e.g. it is very close to the camera) we may have several pixels covered by the same texel (magnification). 
+	When it is smaller (e.g. very far from the camera) several texels are covered by the same pixel (minification). 
+	Here we select the linear interpolation filter type for both cases. 
+	As we've seen earlier, linear interpolation provides good looking results by mixing the colors of a 2x2 texel quad based on the proximity of the actual texel location (calculated by scaling the texture coordinates by the texture dimensions).
 */
 
 #include <stdio.h>
@@ -69,7 +81,7 @@ static void RenderSceneCB()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	static float scale = 0.0f;
-	scale += 0.1f;
+// 	scale += 0.1f;
 
 	Pipeline p;
 	p.Rotate(0.0f, scale, 0.0f);
@@ -118,18 +130,19 @@ static void InitializeGlutCallbacks()
 	glutDisplayFunc(RenderSceneCB);
 	glutIdleFunc(RenderSceneCB);
 	glutSpecialFunc(SpecialKeyboardCB);
-	glutPassiveMotionFunc(PassiveMouseCB);
+// 	glutPassiveMotionFunc(PassiveMouseCB);
 	glutKeyboardFunc(KeyboardCB);
 }
 
 static void CreateVertexBuffer()
 {
 	Vertex vertices[4] = {
-		Vertex(Vector3f(-1.0f, -1.0f, 0.5774f), Vector2f(0.0f, 0.0f)),
-		Vertex(Vector3f(0.0f, -1.0f, -1.15475f), Vector2f(0.5f, 0.0f)),
-		Vertex(Vector3f(1.0f, -1.0f, 0.5773f), Vector2f(1.0f, 0.0f)),
-		Vertex(Vector3f(0.0f, 1.0f, 0.0f), Vector2f(0.5f, 1.0f)),
+		Vertex(Vector3f(-1.0f, -1.0f, 0.5774f), Vector2f(0.0f, 0.0f)),		// top left (0, 1)
+		Vertex(Vector3f(0.0f, -1.0f, -1.15475f), Vector2f(0.5f, 0.0f)),		// 
+		Vertex(Vector3f(1.0f, -1.0f, 0.5773f), Vector2f(1.0f, 0.0f)),		// bottom right (1, 1)
+		Vertex(Vector3f(0.0f, 1.0f, 0.0f), Vector2f(0.5f, 1.0f)),			// 
 	};
+	// YÖáÏà·´µÄ
 
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -265,12 +278,43 @@ int main(int argc, char** argv)
 	glUniform1i(gSampler, 0);
 
 	pTexture = new Texture(GL_TEXTURE_2D, "../Content/test.png");
-
 	if (!pTexture->Load())
 	{
 		return 1;
 	}
 
+	/*	When creating a Texture object you will need to specify a target (we use GL_TEXTURE_2D) and file name. 
+		After that you call the Load() function. This can fail, for example, if the file does not exist or if
+		ImageMagick encountered any other error. When you want to use a specific Texture instance you need to 
+		bind it to one of the texture units.
+	*/
+
+	/*
+		glTexImage2D(m_textureTarget, 0, GL_RGBA, m_pImage->columns(), m_pImage->rows(), 0, GL_RGBA, GL_UNSIGNED_BYTE, m_blob.data());
+		This rather complex function is used to load the main part of the texture object, that is, the texture data itself.
+		There are several glTexImage* function available and each one covers a few texture targets.
+		
+		The texture target is always the first parameter.
+		The second parameter is the LOD, or Level - Of - Detail. 
+			A texture object can contain the same texture in different resolutions, a concept known as mip - mapping.Each mip - map has a different LOD index, 
+			starting from 0 for the highest resolution and growing as resolution decreases.
+			For now, we have only a single mip - map so we pass zero.
+		The next parameter is the internal format in which OpenGL stores the texture.
+			For example, you can pass a texture with the full four color channel(red, green, blue and alpha) 
+			but if you specify GL_RED you will get a texture with only the red channel, which looks kinda, well..., red(try it!).
+			We use GL_RGBA to get the full texture color correctly.
+		The next two parameters are the width and height of the texture in texels.
+			ImageMagick conveniently stores this information for us when it loads the image and we get it using the Image::columns() / rows() functions.
+		The fifth parameter is the border, which we leave as zero for now.
+		The last three parameters specify the source of the incoming texture data.
+			The parameters are format, type and memory address.
+			The format tells us the number of channels and needs to match the BLOB that we have in memory.
+			The type describes the core data type that we have per channel.
+			OpenGL supports many data types but in the ImageMagick BLOB we have one byte per channel so we use GL_UNSIGNED_BYTE.
+			Finally comes the memory address of the actual data which we extract from the BLOB using the Blob::data() function.
+	*/
+	
+	
 	gPersProjInfo.FOV = 60.0f;
 	gPersProjInfo.Height = WINDOW_HEIGHT;
 	gPersProjInfo.Width = WINDOW_WIDTH;
