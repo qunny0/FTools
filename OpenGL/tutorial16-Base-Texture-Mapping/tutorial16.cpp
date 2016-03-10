@@ -1,3 +1,28 @@
+/*
+	To get texture mapping working you need to do three things;
+	1. Load a texture into OpenGL
+	2. Supply texture coordinates with the vertices (to map the texture to them)
+	3. Perform a sampling operation from the texture using the texture coordinates in order to get the pixel color.
+	Since a triangle is scaled, rotated, translated and finally projected it can land on the screen in numerous ways and look very different depending on its
+	orientation to the camera. What the GPU needs to do is make the texture follow the movement of the vertices of the triangle so that it will look real
+	(if the texture appear to "swim" across the triangle it will not). To do this the developer supplies a set of coordinates knows as 'texture coordinates' to
+	each vertex. As the GPU rasterizes the triangle it interpolates the texture coordinates across the triangle face and in the fragment shader the developer maps
+	these coordinates to the texture. This action is know as 'sampling' and the result of sampling is a texel (a pixel in a texture). the texel often contains a color
+	which is used to paint the corresponding pixel to the screen. In the coming tutorials we will see that the texel can contain different types of data that can be 
+	used for multiple effects.
+
+	OpenGl supports several types of textures such as 1D, 2D, 3D, cube, etc that can be used for different techniques. Let`s stick with 2D texture for now. A 2D texture
+	has a width and height that can be any number within the limitations of the spec. Multiplying the width by height tells you the number of texels in the texture.
+	How do you specify the texture coordinates of a vertex? - No, it is not the coordinate of a texel inside the texture. That would be too limiting because replacing the 
+	a texture with one that has different width/height means that will need to update the texture coordinates of all the vertices to match the new texture. The ideal 
+	scenario is to be enable to change textures without changing texture coordinates. Therefore, texture coordinates are specified in 'texture space' which is simply 
+	the normalized range [0,1]. This means that the texture coordinates is usually a fraction and by multiplying that fraction with the corresponding width/height of a 
+	texture we get the coordinate of the texel in the texture. For example, If the texture coordinate is [0.5, 0.1] and the texture has a width of 320 and a height of 200
+	the texel location will be (160,20) (0.5*320=160 and 0.1*200=20).
+
+
+*/
+
 #include <stdio.h>
 
 #include "glew.h"

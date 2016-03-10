@@ -14,7 +14,7 @@
     <ProjectGuid>{B5871FF3-14CA-4B84-B262-DC32F487641A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Tutorial6</RootNamespace>
-    <ProjectName>tutorial6</ProjectName>
+    <ProjectName>tutorial06</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -83,7 +83,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\common\src\opengl_util.cpp" />
-    <ClCompile Include="tutorial6.cpp" />
+    <ClCompile Include="tutorial06.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shader.fs" />

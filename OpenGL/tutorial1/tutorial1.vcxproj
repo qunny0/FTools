@@ -22,6 +22,7 @@
     <ProjectGuid>{F9E9AE1B-2048-436F-946A-F6BA815CED26}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>tutorial1</RootNamespace>
+    <ProjectName>tutorial01</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -147,7 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="tutorial1.cpp" />
+    <ClCompile Include="tutorial01.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -37,6 +37,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial15-Camera-Control-P
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial16-Base-Texture-Mapping", "tutorial16-Base-Texture-Mapping\tutorial16-Base-Texture-Mapping.vcxproj", "{DF67C2A7-B473-4A4A-B0B6-67F36DEBB76F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "c-heart", "c-heart\c-heart.vcxproj", "{D4F6D90F-F9B6-41E9-B98A-BA8C331015F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -219,6 +221,16 @@ Global
 		{DF67C2A7-B473-4A4A-B0B6-67F36DEBB76F}.Release|Win32.ActiveCfg = Release|Win32
 		{DF67C2A7-B473-4A4A-B0B6-67F36DEBB76F}.Release|Win32.Build.0 = Release|Win32
 		{DF67C2A7-B473-4A4A-B0B6-67F36DEBB76F}.Release|x64.ActiveCfg = Release|Win32
+		{D4F6D90F-F9B6-41E9-B98A-BA8C331015F3}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{D4F6D90F-F9B6-41E9-B98A-BA8C331015F3}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{D4F6D90F-F9B6-41E9-B98A-BA8C331015F3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D4F6D90F-F9B6-41E9-B98A-BA8C331015F3}.Debug|Win32.Build.0 = Debug|Win32
+		{D4F6D90F-F9B6-41E9-B98A-BA8C331015F3}.Debug|x64.ActiveCfg = Debug|Win32
+		{D4F6D90F-F9B6-41E9-B98A-BA8C331015F3}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{D4F6D90F-F9B6-41E9-B98A-BA8C331015F3}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{D4F6D90F-F9B6-41E9-B98A-BA8C331015F3}.Release|Win32.ActiveCfg = Release|Win32
+		{D4F6D90F-F9B6-41E9-B98A-BA8C331015F3}.Release|Win32.Build.0 = Release|Win32
+		{D4F6D90F-F9B6-41E9-B98A-BA8C331015F3}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
