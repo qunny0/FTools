@@ -71,8 +71,8 @@ public:
 			1, 2, 0
 		};
 
-// 		CreateIndexBuffer(Indices, sizeof(Indices));
-// 		CreateVertexBuffer(Indices, ARRAY_SIZE_IN_ELEMENTS);
+		CreateIndexBuffer(Indices, sizeof(Indices));
+		CreateVertexBuffer(Indices, ARRAY_SIZE_IN_ELEMENTS(Indices));
 
 		m_pEffect = new LightingTechnique();
 		if (!m_pEffect->Init())
