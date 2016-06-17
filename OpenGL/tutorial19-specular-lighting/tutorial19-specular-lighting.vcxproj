@@ -81,7 +81,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\common\src\camera.cpp" />
+    <ClCompile Include="..\common\src\glut_backend.cpp" />
+    <ClCompile Include="..\common\src\math_3d.cpp" />
+    <ClCompile Include="..\common\src\ogldev_app.cpp" />
+    <ClCompile Include="..\common\src\ogldev_texture.cpp" />
+    <ClCompile Include="..\common\src\ogldev_util.cpp" />
+    <ClCompile Include="..\common\src\pipeline.cpp" />
+    <ClCompile Include="..\common\src\technique.cpp" />
+    <ClCompile Include="lighting_technique.cpp" />
     <ClCompile Include="tutorial19.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lighting_technique.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lighting.fs" />
+    <None Include="lighting.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
