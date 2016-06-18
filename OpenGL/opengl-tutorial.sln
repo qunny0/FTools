@@ -45,6 +45,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial18-diffuse-lighting
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial19-specular-lighting", "tutorial19-specular-lighting\tutorial19-specular-lighting.vcxproj", "{2D468919-1AA4-4E26-AAB4-C3B5BB43CDB8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tutorial20-point-light", "tutorial20-point-light\tutorial20-point-light.vcxproj", "{77DCA791-AA09-4CA5-A551-6A69AB49791A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -267,6 +269,16 @@ Global
 		{2D468919-1AA4-4E26-AAB4-C3B5BB43CDB8}.Release|Win32.ActiveCfg = Release|Win32
 		{2D468919-1AA4-4E26-AAB4-C3B5BB43CDB8}.Release|Win32.Build.0 = Release|Win32
 		{2D468919-1AA4-4E26-AAB4-C3B5BB43CDB8}.Release|x64.ActiveCfg = Release|Win32
+		{77DCA791-AA09-4CA5-A551-6A69AB49791A}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{77DCA791-AA09-4CA5-A551-6A69AB49791A}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{77DCA791-AA09-4CA5-A551-6A69AB49791A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{77DCA791-AA09-4CA5-A551-6A69AB49791A}.Debug|Win32.Build.0 = Debug|Win32
+		{77DCA791-AA09-4CA5-A551-6A69AB49791A}.Debug|x64.ActiveCfg = Debug|Win32
+		{77DCA791-AA09-4CA5-A551-6A69AB49791A}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{77DCA791-AA09-4CA5-A551-6A69AB49791A}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{77DCA791-AA09-4CA5-A551-6A69AB49791A}.Release|Win32.ActiveCfg = Release|Win32
+		{77DCA791-AA09-4CA5-A551-6A69AB49791A}.Release|Win32.Build.0 = Release|Win32
+		{77DCA791-AA09-4CA5-A551-6A69AB49791A}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

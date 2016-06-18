@@ -41,6 +41,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\output\</OutDir>
+    <IntDir>$(SolutionDir)\intermediate\$(ProjectName)$(Configuration)\</IntDir>
+    <IncludePath>../common/include/;../common/include/assimp/;../common/include/ImageMagick-6;$(IncludePath)</IncludePath>
+    <LibraryPath>../common/lib/;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -56,6 +60,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;freeglut.lib;glfw3.lib;glfw3dll.lib;CORE_DB_Magick++_.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -76,6 +81,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\common\src\camera.cpp" />
+    <ClCompile Include="..\common\src\glut_backend.cpp" />
+    <ClCompile Include="..\common\src\math_3d.cpp" />
+    <ClCompile Include="..\common\src\ogldev_app.cpp" />
+    <ClCompile Include="..\common\src\ogldev_backend.cpp" />
+    <ClCompile Include="..\common\src\ogldev_glfw_backend.cpp" />
+    <ClCompile Include="..\common\src\ogldev_texture.cpp" />
+    <ClCompile Include="..\common\src\ogldev_util.cpp" />
+    <ClCompile Include="..\common\src\pipeline.cpp" />
+    <ClCompile Include="..\common\src\technique.cpp" />
+    <ClCompile Include="lighting_technique.cpp" />
+    <ClCompile Include="tutorial20.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lighting_technique.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lighting.fs" />
+    <None Include="lighting.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
