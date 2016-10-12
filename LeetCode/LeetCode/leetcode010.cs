@@ -42,13 +42,13 @@ namespace leetcode010 {
 		}
 	}
 
-	class MainClass
-	{
-		public static void Main (string[] args)
-		{
-			Solution s = new Solution ();
-			Console.WriteLine (s.IsMatch("aa", "a"));
-		}
-	}
+//	class MainClass
+//	{
+//		public static void Main (string[] args)
+//		{
+//			Solution s = new Solution ();
+//			Console.WriteLine (s.IsMatch("aa", "a"));
+//		}
+//	}
 
 }
