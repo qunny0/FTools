@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="LeetCode/LeetCode.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="LeetCode/leetcode020.cs">
+    <Files>
+      <File FileName="LeetCode/leetcode010.cs" Line="47" Column="22" />
+      <File FileName="LeetCode/leetcode020.cs" Line="42" Column="17" />
+      <File FileName="LeetCode/leetcode019.cs" Line="8" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
