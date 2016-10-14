@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 //https://leetcode.com/problems/integer-to-roman/
 
@@ -25,8 +26,40 @@ using System.Collections;
 
 namespace leetcode012 {
 	public class Solution {
+		
 		public string IntToRoman(int num) {
-			return "";
+			char[] romans = {'M', 'D', 'C', 'L', 'X', 'V', 'I'};
+			int[] nums = { 1000, 500, 100, 50, 10, 5, 1 };
+
+			string strRet = "";
+			for (int i = 0; i < nums.Length; i += 2) {
+				int bitnum = num / nums[i];
+				num = num % nums [i];
+
+				if (bitnum == 0) {
+					continue;
+				}
+				if (bitnum <= 3) {
+					for (int j = 0; j < bitnum; ++j) {
+						strRet += romans [i];
+					}
+				} else if (bitnum <= 5) {
+					for (int j = 0; j < 5 - bitnum; ++j) {
+						strRet += romans [i];
+					}
+					strRet += romans [i - 1];
+				} else if (bitnum <= 8) {
+					strRet += romans [i - 1];
+					for (int j = 0; j < bitnum - 5; ++j) {
+						strRet += romans [i];
+					}
+				} else {
+					strRet += romans [i];
+					strRet += romans [i - 2];
+				}
+			}
+
+			return strRet;
 		}
 	}
 
@@ -34,7 +67,26 @@ namespace leetcode012 {
 //	{
 //		public static void Main (string[] args)
 //		{
+//			Dictionary<int, string> dictTests = new Dictionary<int, string>();
+//			dictTests.Add (14, "XIV");
+//			dictTests.Add (1, "I");
+//			dictTests.Add (4, "IV");
+//			dictTests.Add (8, "VIII");
+//			dictTests.Add (16, "XVI");
+//			dictTests.Add (45, "XLV");
+//			dictTests.Add (99, "XCIX");
+//			dictTests.Add (1666, "MDCLXVI");
+//			dictTests.Add (3999, "MMMCMXCIX");
+//
 //			Solution s = new Solution ();
+//
+//			foreach (KeyValuePair<int, string> kvp in dictTests) {
+//				string strRes = s.IntToRoman (kvp.Key);
+//				if (strRes != kvp.Value) {
+//					throw new Exception ("error " + kvp + " --> " + strRes);
+//				}
+//			}
+//
 //			Console.WriteLine (s.IntToRoman(3999));
 //		}
 //	}

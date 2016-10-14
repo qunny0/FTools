@@ -76,23 +76,23 @@ namespace LeetCode
 			}
 		}
 
-		class MainClass
-		{
-			public static void Main (string[] args)
-			{
-				Solution s = new Solution();
-					
-				int[] arr1 = {5};
-				int[] arr2 = {1,2,4};
-				ListNode l1 = s.createArray (arr1);
-				ListNode l2 = s.createArray (arr2);
-
-				ListNode l = s.MergeTwoLists (l1, l2);
-				if (l != null) {
-					l.print ();
-				}
-			}
-		}
+//		class MainClass
+//		{
+//			public static void Main (string[] args)
+//			{
+//				Solution s = new Solution();
+//					
+//				int[] arr1 = {5};
+//				int[] arr2 = {1,2,4};
+//				ListNode l1 = s.createArray (arr1);
+//				ListNode l2 = s.createArray (arr2);
+//
+//				ListNode l = s.MergeTwoLists (l1, l2);
+//				if (l != null) {
+//					l.print ();
+//				}
+//			}
+//		}
 	}
 }
 

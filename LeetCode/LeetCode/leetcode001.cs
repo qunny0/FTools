@@ -3,6 +3,7 @@ using System.Collections;
 
 namespace leetcode001 {
 	public class Solution {
+//		Hash Table
 		public int[] TwoSum(int[] nums, int target) {
 			Hashtable ht = new Hashtable();
 
