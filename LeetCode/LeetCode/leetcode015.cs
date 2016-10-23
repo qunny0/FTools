@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 // https://leetcode.com/problems/3sum/
 // http://www.sigmainfy.com/blog/summary-of-ksum-problems.html
+// http://blog.csdn.net/puqutogether/article/details/45558445
 
 // 01 Time Limit Exceeded
 
@@ -15,44 +16,60 @@ namespace LeetCode015
 
 		public IList<IList<int>> ThreeSum(int[] nums) {
 			Array.Sort (nums);
-			Array.ForEach<int> (nums, (i) => Console.WriteLine (i));
+//			Array.ForEach<int> (nums, (i) => Console.Write (i + ", "));
 
 			resList.Clear ();
 
-			for (int i = 0; i < nums.Length - 2; ++i) {
-				if (i > 0 && nums [i] == nums [i - 1]) {
-					continue;
-				}
-
-				TwoSum (nums, i, 0 - nums [i]);
+			for (int i = 0; i < nums.Length - 2;) {
+				TwoSum(nums, i, 0-nums[i]);
+				do {
+					++i;
+				} while(i < nums.Length && nums [i] == nums [i - 1]);
 			}
 
 			return resList;
 		}
+			
+		int TwoSum(int[] nums, int start, int target)
+		{			
+//			Console.WriteLine ("\ntwo sum result : " + start + ", " + target);
+			int resCount = 0;
 
-		void TwoSum(int[] nums, int start, int target) {
-			int left = start+1, right = nums.Length-1;
-			while (left < right) {
-				if (nums [left] + nums [right] == target) {
-					IList<int> cur = new List<int> ();
-					cur.Add (nums [start]);
-					cur.Add (nums [left]);
-					cur.Add (nums [right]);
-					resList.Add (cur);
+			// check length
+			if (nums.Length < 2) {
+				return resCount;
+			}
+
+			int first = start;
+			start += 1;
+
+			// nums is valid
+			int end = nums.Length - 1;
+			while (start < end) {
+				int tmpSum = nums [start] + nums [end];
+				if (tmpSum == target) {
+//					Console.WriteLine ("\t" + nums [first] + ", " + nums [start] + ", " + nums [end]);
+					IList<int> res = new List<int> ();
+					res.Add (nums[first]);
+					res.Add (nums[start]);
+					res.Add (nums[end]);
+					resList.Add (res);
+					++resCount;
 					do {
-						left++;
-					}while(left < nums.Length && nums[left] == nums[left-1]);
+						++start;
+					} while( start < end && nums [start] == nums [start - 1]);
 
 					do {
-						right--;
-					} while(right >= 0 && nums[right] == nums[right+1]);
-
-				} else if (nums [left] + nums [right] > target) {
-					--right;
+						--end;
+					} while(end > start && nums [end] == nums [end + 1]);
+				} else if (tmpSum > target) {
+					--end;
 				} else {
-					++left;
+					++start;
 				}
 			}
+
+			return resCount;
 		}
 
 		public List<IList<int>> resList;
@@ -159,6 +176,35 @@ namespace LeetCode015
 
 		}
 
+		public void runTwoSumTest(Solution s) {
+			// 1
+//			int[] rray = { };
+//			int res = 0;
+
+			// 2
+//			int[] rray = {1,1};
+//			int res = 2;
+
+			// 3
+//			int[] rray = {1,1,2,2};
+//			int res = 3;
+
+			// 4
+//			int[] rray = {1,1,1};
+//			int res = 2;
+
+			// 5
+//			int[] rray = {1,2,4,3,5,6};
+//			int res = 7;
+
+			// 6
+//			int[] rray = {1,2,4,3,5,6,1,2,4,3,5,6};
+//			int res = 7;
+
+//			int arrlen = rray.Length;
+//			s.TwoSumTest (rray, 0, res);
+		}
+
 		public int _testNum = 1;
 		public int[][] _inputTest = null;
 		public List<IList<IList<int>>> _output = null;
@@ -168,9 +214,10 @@ namespace LeetCode015
 	{
 		public static void Main (string[] args)
 		{
-			Test test = new Test ();
 			Solution s = new Solution ();
-			test.runUnit (s);
+			int[] inputTest = {0, 0, 0};
+//			int[] inputTest = {-1, 0, 1, 2, -1, -4};
+			s.ThreeSum(inputTest);
 
 			Console.WriteLine ("success !");
 		}
