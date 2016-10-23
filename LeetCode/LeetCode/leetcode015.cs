@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 // https://leetcode.com/problems/3sum/
 // http://www.sigmainfy.com/blog/summary-of-ksum-problems.html
+// http://blog.csdn.net/puqutogether/article/details/45558445
 
 // 01 Time Limit Exceeded
 
@@ -164,16 +165,16 @@ namespace LeetCode015
 		public List<IList<IList<int>>> _output = null;
 	}
 
-	class MainClass
-	{
-		public static void Main (string[] args)
-		{
-			Test test = new Test ();
-			Solution s = new Solution ();
-			test.runUnit (s);
-
-			Console.WriteLine ("success !");
-		}
-	}
+//	class MainClass
+//	{
+//		public static void Main (string[] args)
+//		{
+//			Test test = new Test ();
+//			Solution s = new Solution ();
+//			test.runUnit (s);
+//
+//			Console.WriteLine ("success !");
+//		}
+//	}
 }
 
