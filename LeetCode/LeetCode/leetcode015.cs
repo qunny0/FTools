@@ -210,17 +210,17 @@ namespace LeetCode015
 		public List<IList<IList<int>>> _output = null;
 	}
 
-	class MainClass
-	{
-		public static void Main (string[] args)
-		{
-			Solution s = new Solution ();
-			int[] inputTest = {0, 0, 0};
-//			int[] inputTest = {-1, 0, 1, 2, -1, -4};
-			s.ThreeSum(inputTest);
-
-			Console.WriteLine ("success !");
-		}
-	}
+//	class MainClass
+//	{
+//		public static void Main (string[] args)
+//		{
+//			Solution s = new Solution ();
+//			int[] inputTest = {0, 0, 0};
+////			int[] inputTest = {-1, 0, 1, 2, -1, -4};
+//			s.ThreeSum(inputTest);
+//
+//			Console.WriteLine ("success !");
+//		}
+//	}
 }
 
