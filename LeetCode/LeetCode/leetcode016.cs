@@ -77,17 +77,17 @@ namespace LeetCode016
 		int _resSum;
 	}
 
-	class MainClass
-	{
-		public static void Main (string[] args)
-		{
-			Solution s = new Solution ();
-			int[] inputTest = {0, 0, 0};
-			int target = 1;
-			int resSum = s.ThreeSumClosest(inputTest, target);
-
-			Console.WriteLine ("success ! - " + resSum);
-		}
-	}
+//	class MainClass
+//	{
+//		public static void Main (string[] args)
+//		{
+//			Solution s = new Solution ();
+//			int[] inputTest = {0, 0, 0};
+//			int target = 1;
+//			int resSum = s.ThreeSumClosest(inputTest, target);
+//
+//			Console.WriteLine ("success ! - " + resSum);
+//		}
+//	}
 }
 
