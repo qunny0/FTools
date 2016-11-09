@@ -134,28 +134,28 @@ namespace LeetCode
 				return root;
 			}
 
-			public static void Main (string[] args)
-			{
-				Solution s = new Solution();
-
-				ListNode[] test1 = new ListNode[2];
-				int[] test1_0 = { 1, 3, 5, 7 };
-				int[] test1_1 = { 2, 3, 6, 8 };
-				test1 [0] = createListByArray (test1_0);
-				test1 [1] = createListByArray (test1_1);
-
-//				test1 [0].print ();
-//				test1 [1].print ();
-
-				ListNode[] test2 = new ListNode[1];
-
-				test2 [0] = null;
-
-				ListNode proot = s.MergeKLists (test2);
-				if (proot != null) {
-					proot.print ();
-				}
-			}
+//			public static void Main (string[] args)
+//			{
+//				Solution s = new Solution();
+//
+//				ListNode[] test1 = new ListNode[2];
+//				int[] test1_0 = { 1, 3, 5, 7 };
+//				int[] test1_1 = { 2, 3, 6, 8 };
+//				test1 [0] = createListByArray (test1_0);
+//				test1 [1] = createListByArray (test1_1);
+//
+////				test1 [0].print ();
+////				test1 [1].print ();
+//
+//				ListNode[] test2 = new ListNode[1];
+//
+//				test2 [0] = null;
+//
+//				ListNode proot = s.MergeKLists (test2);
+//				if (proot != null) {
+//					proot.print ();
+//				}
+//			}
 		}
 	}
 }
