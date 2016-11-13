@@ -103,21 +103,21 @@ namespace LeetCode
 				return root;
 			}
 
-			public static void Main (string[] args)
-			{
-				Solution s = new Solution();
-
-				ListNode[] test1 = new ListNode[2];
-				int[] test1_0 = { 1, 2, 3, 4 };
-				int[] test1_1 = {  };
-				test1 [0] = createListByArray (test1_0);
-				test1 [1] = createListByArray (test1_1);
-
-				ListNode proot = s.ReverseKGroup (test1[1], 3);
-				if (proot != null) {
-					proot.print ();
-				}
-			}
+//			public static void Main (string[] args)
+//			{
+//				Solution s = new Solution();
+//
+//				ListNode[] test1 = new ListNode[2];
+//				int[] test1_0 = { 1, 2, 3, 4 };
+//				int[] test1_1 = {  };
+//				test1 [0] = createListByArray (test1_0);
+//				test1 [1] = createListByArray (test1_1);
+//
+//				ListNode proot = s.ReverseKGroup (test1[1], 3);
+//				if (proot != null) {
+//					proot.print ();
+//				}
+//			}
 		}
 	}
 }
