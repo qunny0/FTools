@@ -102,34 +102,34 @@ namespace LeetCode
 			static private int _halfIntMax;
 		}
 
-		class MainClass
-		{
-			public static void Main (string[] args)
-			{
-				Solution s = new Solution();
-
-//				int t1 = s.twoMinPower (0, 1);
-//				int t2 = s.twoMinPower (1, 0);
-//				int t3 = s.twoMinPower (0, 0);
-//				int t4 = s.twoMinPower (1, 1);
-//				int t5 = s.twoMinPower (10, 3);
-//				int t6 = s.twoMinPower (12, 2);
-//				int t7 = s.twoMinPower (2147482645, 2);
-//				int t8 = s.twoMinPower (2147483647, 3);
-
-//				int t1 = s.Divide (0, 1);
-//				int t2 = s.Divide (1, 0);
-//				int t3 = s.Divide (0, 0);
-//				int t4 = s.Divide (1, 1);
-				int t5 = s.Divide (-2147483648, -1);
-				int t6 = s.Divide (12, 2);
-				int t7 = s.Divide (2147482645, 2);
-				int t8 = s.Divide (2147483647, 3);
-
-				int idx = s.Divide (1111, 2);
-				Console.WriteLine ("" + idx);
-			}
-		}
+//		class MainClass
+//		{
+//			public static void Main (string[] args)
+//			{
+//				Solution s = new Solution();
+//
+////				int t1 = s.twoMinPower (0, 1);
+////				int t2 = s.twoMinPower (1, 0);
+////				int t3 = s.twoMinPower (0, 0);
+////				int t4 = s.twoMinPower (1, 1);
+////				int t5 = s.twoMinPower (10, 3);
+////				int t6 = s.twoMinPower (12, 2);
+////				int t7 = s.twoMinPower (2147482645, 2);
+////				int t8 = s.twoMinPower (2147483647, 3);
+//
+////				int t1 = s.Divide (0, 1);
+////				int t2 = s.Divide (1, 0);
+////				int t3 = s.Divide (0, 0);
+////				int t4 = s.Divide (1, 1);
+//				int t5 = s.Divide (-2147483648, -1);
+//				int t6 = s.Divide (12, 2);
+//				int t7 = s.Divide (2147482645, 2);
+//				int t8 = s.Divide (2147483647, 3);
+//
+//				int idx = s.Divide (1111, 2);
+//				Console.WriteLine ("" + idx);
+//			}
+//		}
 	}
 }
 
