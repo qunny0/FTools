@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 /**
  * Error 
+ * # 1 : "wordgoodgoodgoodbestword" ["word","good","best","good"]
+ * # 2 : "barfoofoobarthefoobarman" ["bar","foo","the"] Output: [6] Expected: [6,9,12]
 */
 
 namespace LeetCode
@@ -17,35 +19,39 @@ namespace LeetCode
 					return res;
 				}
 
-				IDictionary<string, int> dicWord = new Dictionary<string, int> ();
-				foreach (string word in words) {
-					dicWord.Add (word, 1);
-				}
+				IDictionary<string, short> dicWord = new Dictionary<string, short> ();
 
 				int wordLen = words [0].Length;
 				int wordSize = words.Length;
 				int wordsLen = wordLen * wordSize;
 
 				for (int i = 0; i < s.Length - wordsLen + 1; ++i) {
-					foreach (KeyValuePair<string, int> it in dicWord) {
-						it.Value = 1;
+					dicWord.Clear ();
+					foreach (string word in words) {
+						if (dicWord.ContainsKey (word)) {
+							dicWord [word] += 1;
+						} else {
+							dicWord.Add (word, 1);
+						}
 					}
 
 					var substr = s.Substring (i, wordsLen);
-					for(int j = 0; j < wordsLen; ++j){
+					for(int j = 0; j < wordSize; ++j){
 						string subsubstr = substr.Substring (j * wordLen, wordLen);
 						if (dicWord.ContainsKey (subsubstr)) {
-							if (dicWord [subsubstr] == 1) {
-								dicWord [subsubstr] = 0;
+							if (dicWord [subsubstr] > 0) {
+								dicWord [subsubstr] -= 1;
 							} else {
 								break;
 							}
+						} else {
+							break;
 						}
 					}
 
 					bool match = true;
 					foreach (var ele in dicWord.Values) {
-						if (ele == 1) {
+						if (ele > 0) {
 							match = false;
 						}
 					}
@@ -64,10 +70,9 @@ namespace LeetCode
 			{
 				Solution s = new Solution();
 
-				string s1 = "barfoothefoobarman";
+				string s1 = "barfoofoobarthefoobarman";
 				string [] s1_1 = {
-					"foo",
-					"bar"
+					"bar","foo","the"
 				};
 
 				IList<int> res1 = s.FindSubstring (s1, s1_1);
