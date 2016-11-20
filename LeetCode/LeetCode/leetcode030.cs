@@ -64,24 +64,24 @@ namespace LeetCode
 			}
 		}
 
-		class MainClass
-		{
-			public static void Main (string[] args)
-			{
-				Solution s = new Solution();
-
-				string s1 = "barfoofoobarthefoobarman";
-				string [] s1_1 = {
-					"bar","foo","the"
-				};
-
-				IList<int> res1 = s.FindSubstring (s1, s1_1);
-				foreach(var re in res1){
-					Console.Write (re + ",");
-				}
-				Console.WriteLine ("");
-			}
-		}
+//		class MainClass
+//		{
+//			public static void Main (string[] args)
+//			{
+//				Solution s = new Solution();
+//
+//				string s1 = "barfoofoobarthefoobarman";
+//				string [] s1_1 = {
+//					"bar","foo","the"
+//				};
+//
+//				IList<int> res1 = s.FindSubstring (s1, s1_1);
+//				foreach(var re in res1){
+//					Console.Write (re + ",");
+//				}
+//				Console.WriteLine ("");
+//			}
+//		}
 	}
 }
 
