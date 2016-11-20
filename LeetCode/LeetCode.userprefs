@@ -1,9 +1,8 @@
 ﻿<Properties StartupItem="LeetCode/LeetCode.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="LeetCode/leetcode030.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LeetCode/leetcode031.cs">
     <Files>
-      <File FileName="LeetCode/leetcode029.cs" Line="131" Column="24" />
-      <File FileName="LeetCode/leetcode030.cs" Line="28" Column="7" />
+      <File FileName="LeetCode/leetcode031.cs" Line="81" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
