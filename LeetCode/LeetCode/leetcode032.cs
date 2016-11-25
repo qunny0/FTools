@@ -32,24 +32,14 @@ namespace LeetCode
 								res = Math.Max (res, i - black.Peek ());
 							} else {
 								res = Math.Max (res, i - start);
-//								start = i;
 							}
 						} else {
-//							black.Clear ();
 							start = i;
 						}
 					}
 				}
 
 				return res;
-//				int max = 0;
-//				char[] sarr = s.ToCharArray ();
-//				for (int i = 0; i < sarr.Length; ++i) {
-//					int tmax = longestValidForm (s, i);
-//					max = tmax > max ? tmax : max;
-//				}
-//
-//				return max;
 			}
 
 			protected int longestValidForm(string s, int beg) {
@@ -75,18 +65,18 @@ namespace LeetCode
 			}
 		}
 
-		class MainClass
-		{
-			public static void Main (string[] args)
-			{
-				Solution s = new Solution();
-				string test = ")()())()()(";
-//				string test = ")(((())))(";
-
-				int res = s.LongestValidParentheses (test);
-				Console.WriteLine ("" + res);
-			}
-		}
+//		class MainClass
+//		{
+//			public static void Main (string[] args)
+//			{
+//				Solution s = new Solution();
+//				string test = ")()())()()(";
+////				string test = ")(((())))(";
+//
+//				int res = s.LongestValidParentheses (test);
+//				Console.WriteLine ("" + res);
+//			}
+//		}
 	}
 }
 
