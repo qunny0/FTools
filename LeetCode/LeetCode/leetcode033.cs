@@ -84,20 +84,20 @@ namespace LeetCode
 			}
 		}
 
-		class MainClass
-		{
-			public static void Main (string[] args)
-			{
-				Solution s = new Solution();
-				int [] test = {3, 1};
-				int tt = 3;
-
-//				int ttr = s.findPivot (test, 0, test.Length);
-
-				int res = s.Search (test, tt);
-				Console.WriteLine ("" + res);
-			}
-		}
+//		class MainClass
+//		{
+//			public static void Main (string[] args)
+//			{
+//				Solution s = new Solution();
+//				int [] test = {3, 1};
+//				int tt = 3;
+//
+////				int ttr = s.findPivot (test, 0, test.Length);
+//
+//				int res = s.Search (test, tt);
+//				Console.WriteLine ("" + res);
+//			}
+//		}
 	}
 }
 
