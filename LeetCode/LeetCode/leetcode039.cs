@@ -13,8 +13,30 @@ namespace LeetCode
 	{
 		public class Solution {
 			public IList<IList<int>> CombinationSum(int[] candidates, int target) {
+				_res = new List<IList<int>> ();
 
+				IList<int> tmpRes = new List<int> ();
+				Array.Sort (candidates);
+
+				combinationOne (candidates, 0, target, tmpRes);
+
+				return _res;
 			}
+
+			protected void combinationOne(int[] numset, int sIdx, int target, IList<int> tmpRes) {
+				if (target == 0) {
+					_res.Add (tmpRes);
+				}
+
+				if (sIdx >= numset.Length || numset[sIdx] > target) {
+					return;
+				}
+
+				tmpRes.Add (numset [sIdx]);
+				combinationOne (numset, sIdx + 1, target - numset [sIdx], tmpRes);
+			}
+
+			private IList<IList<int>> _res;
 		}
 
 		class MainClass
@@ -22,9 +44,10 @@ namespace LeetCode
 			public static void Main (string[] args)
 			{
 				Solution s = new Solution();
-				string res = s.CountAndSay (6);
+				int[] t1 = { 2, 3, 6, 7 };
+				int t1t = 7;
 
-				Console.WriteLine (res);
+				s.CombinationSum (t1, t1t);
 			}
 		}
 	}
