@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace LeetCode
 {
-	public class leetcode039
+	public class leetcode040
 	{
 		public class Solution {
 			public IList<IList<int>> CombinationSum(int[] candidates, int target) {
@@ -18,7 +18,7 @@ namespace LeetCode
 				IList<int> tmpRes = new List<int> ();
 				Array.Sort (candidates);
 
-				helper (candidates, 0, target, tmpRes);
+				helper (candidates, 0, target, tmpRes, 0);
 
 				foreach (IList<int> l in _res) {
 					foreach (int n in l) {
@@ -31,21 +31,26 @@ namespace LeetCode
 			}
 
 
-			protected void helper(int[] nset, int sIdx, int target, IList<int> tmpRes){
+			protected void helper(int[] nset, int sIdx, int target, IList<int> tmpRes, int level){
 				if (sIdx >= nset.Length) {
 					return;
 				}
 
 				for (int i = sIdx; i < nset.Length; ++i) {
+					if (i > sIdx && nset [i] == nset [i - 1]) {
+						continue;
+					}
 					int remain = target - nset [i];
 					if (remain == 0) {
 						tmpRes.Add (nset [i]);
 						_res.Add (new List<int> (tmpRes));
 						tmpRes.RemoveAt (tmpRes.Count - 1);
 					} else if (remain > 0) {
-						tmpRes.Add (nset [i]);
-						helper (nset, i, remain, tmpRes);
+						tmpRes.Add (nset[i]);
+						helper (nset, i + 1, remain, tmpRes, level+1);
 						tmpRes.RemoveAt (tmpRes.Count - 1);
+					} else {
+						break;
 					}
 				}
 			}
@@ -58,7 +63,7 @@ namespace LeetCode
 //			public static void Main (string[] args)
 //			{
 //				Solution s = new Solution();
-//				int[] t1 = { 2, 3, 6, 7 };
+//				int[] t1 = {1, 1, 2, 5, 6, 7, 10};
 //				int t1t = 8;
 //
 //				s.CombinationSum (t1, t1t);
