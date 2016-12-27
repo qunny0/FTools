@@ -38,17 +38,17 @@ namespace LeetCode
 			}
 		}
 
-		class MainClass
-		{
-			public static void Main (string[] args)
-			{
-				Solution s = new Solution();
-				int[] t1 = {1, 1};
-
-				int res = s.FirstMissingPositive (t1);
-				Console.WriteLine (res);
-			}
-		}
+//		class MainClass
+//		{
+//			public static void Main (string[] args)
+//			{
+//				Solution s = new Solution();
+//				int[] t1 = {1, 1};
+//
+//				int res = s.FirstMissingPositive (t1);
+//				Console.WriteLine (res);
+//			}
+//		}
 	}
 }
 
