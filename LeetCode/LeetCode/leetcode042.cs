@@ -49,18 +49,18 @@ namespace LeetCode
 			}
 		}
 
-		class MainClass
-		{
-			public static void Main (string[] args)
-			{
-				Solution s = new Solution();
-//				int[] t1 = {5,2,1,4,1,2};
-				int[] t2 = {0,1,0,2,1,0,1,3,2,1,2,1};
-
-				int res = s.Trap (t2);
-				Console.WriteLine (res);
-			}
-		}
+//		class MainClass
+//		{
+//			public static void Main (string[] args)
+//			{
+//				Solution s = new Solution();
+////				int[] t1 = {5,2,1,4,1,2};
+//				int[] t2 = {0,1,0,2,1,0,1,3,2,1,2,1};
+//
+//				int res = s.Trap (t2);
+//				Console.WriteLine (res);
+//			}
+//		}
 	}
 }
 
