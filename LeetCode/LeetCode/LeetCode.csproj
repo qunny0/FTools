@@ -68,6 +68,7 @@
     <Compile Include="leetcode041.cs" />
     <Compile Include="leetcode042.cs" />
     <Compile Include="leetcode043.cs" />
+    <Compile Include="leetcode044.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

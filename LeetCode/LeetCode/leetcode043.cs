@@ -68,16 +68,16 @@ namespace LeetCode
 			}
 		}
 
-		class MainClass
-		{
-			public static void Main (string[] args)
-			{
-				Solution s = new Solution();
-
-				var res = s.Multiply ("0", "501");
-				Console.WriteLine (res);
-			}
-		}
+//		class MainClass
+//		{
+//			public static void Main (string[] args)
+//			{
+//				Solution s = new Solution();
+//
+//				var res = s.Multiply ("0", "501");
+//				Console.WriteLine (res);
+//			}
+//		}
 	}
 }
 
