@@ -1,6 +1,7 @@
 package main
 
 import (
+<<<<<<< HEAD
 	"bufio"
 	"container/list"
 	"errors"
@@ -8,6 +9,9 @@ import (
 	"fmt"
 	"io"
 	"os"
+=======
+	"fmt"
+>>>>>>> 48daf1b97c219ed3506cfc83ab7ea151664af4a4
 )
 
 // q17
@@ -27,6 +31,7 @@ func mult2(f e) e {
 	return f
 }
 
+<<<<<<< HEAD
 // m := []e{1, 2, 3, 4}
 // s := []e{"a", "b", "c", "d"}
 // mf := q18(m, mult2)
@@ -34,6 +39,8 @@ func mult2(f e) e {
 //
 // fmt.Printf("%v\n", mf)
 // fmt.Printf("%v\n", sf)
+=======
+>>>>>>> 48daf1b97c219ed3506cfc83ab7ea151664af4a4
 func q18(n []e, f func(e) e) []e {
 	m := make([]e, len(n))
 	for k, v := range n {
@@ -51,6 +58,7 @@ func q18(n []e, f func(e) e) []e {
 // func Set(t T) {x = &t}
 // 在第二个函数中，x指向一个新的(堆上分配的)变量t，其包含了实际参数值的副本。
 // 在第一个函数中，x 指向了 t 指向的内容，也就是实际上的参数指向的内容。 因此在第二个函数，我们有了 “额外” 的变量存储了相关值的副本。
+<<<<<<< HEAD
 //
 
 func q19() {
@@ -196,4 +204,15 @@ func q21() {
 
 func main() {
 	q21()
+=======
+
+func main() {
+	m := []e{1, 2, 3, 4}
+	s := []e{"a", "b", "c", "d"}
+	mf := q18(m, mult2)
+	sf := q18(s, mult2)
+
+	fmt.Printf("%v\n", mf)
+	fmt.Printf("%v\n", sf)
+>>>>>>> 48daf1b97c219ed3506cfc83ab7ea151664af4a4
 }
