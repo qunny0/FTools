@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Net.Sockets;
 
 public class CameraFollowPlayer : MonoBehaviour {
 
@@ -10,6 +11,17 @@ public class CameraFollowPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		offset = followObject.transform.position - transform.position;
+
+//		var client = new TcpClient ();
+//		client.Connect ("127.0.0.1", 8888);
+//		client.Close ();
+
+//		NetworkConnectionError error = Network.Connect ("127.0.0.1", "8888");
+//		if (error != NetworkConnectionError.NoError) {
+//			Debug.Log ("Client error : " + error);
+//		} else {
+//			Debug.Log ("Client successful ! ");
+//		}
 	}
 	
 	// Update is called once per frame
