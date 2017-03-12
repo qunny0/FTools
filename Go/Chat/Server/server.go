@@ -9,6 +9,12 @@ import (
 var ip = "127.0.0.1"
 var port = 8888
 
+type User struct {
+	name string
+	id   int64
+	conn *net.Conn
+}
+
 func checkError(err error, info string) (res bool) {
 	if err != nil {
 		fmt.Println(info + " " + err.Error())
@@ -67,13 +73,14 @@ func handler(conn net.Conn, messages chan string) {
 	}
 }
 
-func startServer() {
+func StartServer() {
 	service := ":" + strconv.Itoa(port)
 	tcpAddr, err := net.ResolveTCPAddr("tcp", service)
 	checkError(err, "ResolveTCPAddr")
 
 	l, err := net.Listen("tcp", tcpAddr.String())
 	checkError(err, "ListenTCP")
+
 	conns := make(map[string]net.Conn)
 	messages := make(chan string, 10)
 
@@ -92,5 +99,5 @@ func startServer() {
 }
 
 func main() {
-	startServer()
+	StartServer()
 }
