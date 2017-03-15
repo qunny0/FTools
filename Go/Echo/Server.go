@@ -5,6 +5,7 @@ import (
 	"net"
 	"strconv"
 	"time"
+	"common"
 )
 
 var ip = "127.0.0.1"
@@ -14,6 +15,7 @@ var buff = make([]byte, 1024)
 
 func main() {
 	tcpAddr, er := net.ResolveTCPAddr("tcp", ip+":"+strconv.Itoa(port))
+	common.HandleError(er, "=====")
 	if er != nil {
 		fmt.Printf("Resolve TCP addr %s error : %s !", tcpAddr.String(), er.Error())
 	}

@@ -12,9 +12,18 @@ const BUFF_SIZE = 1024
 var input = make([]byte, BUFF_SIZE)
 
 func main() {
-	tcpAddr, _ := net.ResolveTCPAddr("tcp", "127.0.0.1:9999")
+	tcpAddr, err := net.ResolveTCPAddr("tcp", "127.0.0.1:9999")
+	if err != nil {
+		fmt.Printf("resolve tcp address %s failed.\n", err.Error())
+		return
+	}
 
-	conn, _ := net.DialTCP("tcp", nil, tcpAddr)
+	conn, err := net.DialTCP("tcp", nil, tcpAddr)
+	if err != nil {
+		fmt.Printf("connect %s failed.\n", err.Error())
+		return
+	}
+
 	defer conn.Close()
 	fmt.Println("connected!")
 
