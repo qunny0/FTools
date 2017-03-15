@@ -1,13 +1,15 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"net"
-	"time"
 )
 
 var quitSemaphore chan bool
+
+const BUFF_SIZE = 1024
+
+var input = make([]byte, BUFF_SIZE)
 
 func main() {
 	tcpAddr, _ := net.ResolveTCPAddr("tcp", "127.0.0.1:9999")
@@ -18,24 +20,37 @@ func main() {
 
 	go onMessageRecived(conn)
 
-	b := []byte("time\n")
-	conn.Write(b)
+	var msg string
+	for {
+		fmt.Scanf("%s\n", &msg)
+		bytes := []byte(msg)
+
+		if msg == "" {
+			continue
+		}
+		msg = ""
+
+		conn.Write(bytes)
+
+		if msg == "quit" {
+			break
+		}
+	}
 
 	<-quitSemaphore
 }
 
 func onMessageRecived(conn *net.TCPConn) {
-	reader := bufio.NewReader(conn)
 	for {
-		msg, err := reader.ReadString('\n')
-		fmt.Println(msg)
+		n, err := conn.Read(input)
 		if err != nil {
-			quitSemaphore <- true
-			break
+			fmt.Printf("onMessageRecived error : %s\n", err.Error())
+			return
 		}
 
-		time.Sleep(time.Second)
-		b := []byte(msg)
-		conn.Write(b)
+		if n > 0 {
+			inputstr := input[:n]
+			fmt.Println("get message from server : " + string(inputstr))
+		}
 	}
 }

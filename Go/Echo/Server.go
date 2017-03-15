@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"net"
 	"strconv"
@@ -10,6 +9,8 @@ import (
 
 var ip = "127.0.0.1"
 var port = 9999
+
+var buff = make([]byte, 1024)
 
 func main() {
 	tcpAddr, er := net.ResolveTCPAddr("tcp", ip+":"+strconv.Itoa(port))
@@ -31,7 +32,7 @@ func main() {
 		if err != nil {
 			continue
 		}
-		fmt.Printf("A client connected : " + tcpConn.RemoteAddr().String())
+		fmt.Printf("A client connected : " + tcpConn.RemoteAddr().String() + "\n")
 		go tcpPipe(tcpConn)
 	}
 }
@@ -43,17 +44,17 @@ func tcpPipe(conn *net.TCPConn) {
 		conn.Close()
 	}()
 
-	reader := bufio.NewReader(conn)
-
 	for {
-		message, err := reader.ReadString('\n')
+		n, err := conn.Read(buff)
 		if err != nil {
 			return
 		}
 
-		fmt.Println(string(message))
-		msg := time.Now().String() + "\n"
-		b := []byte(msg)
+		msg := time.Now().String() + ": " + string(buff[:n]) + "\n"
+		fmt.Print(msg)
+
+		b := []byte(string(buff[:n]))
+
 		conn.Write(b)
 	}
 }
