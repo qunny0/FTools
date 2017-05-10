@@ -31,8 +31,7 @@ def readConfig():
 
 def package():
 	for version in ALL_VERSION:
-		print colored("begin package : " + BIG_SERVER + "  " + LANGUAGE + "  " + str(version), "green")
-		packup
+		packup.package(BIG_SERVER, LANGUAGE, version)
 
 def SVNcommit():
 	pass
