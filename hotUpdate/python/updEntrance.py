@@ -2,41 +2,40 @@
 #-*-coding:utf-8-*-
 
 import packup
+from updUtil import *
 
 import sys
 import yaml
 from termcolor import *
 
-BIG_SERVER = ''
-LANGUAGE = ''
-ALL_VERSION = ''
-
 def readConfig():
 	with open("config.yaml", 'r') as stream:
 		try:
 			yc = yaml.load(stream)
-			global BIG_SERVER
-			global LANGUAGE
-			global ALL_VERSION
 
-			BIG_SERVER=yc['bigServer']
-			LANGUAGE=yc['language']
-			ALL_VERSION=yc['allVersion']
-			print colored("BIG_SERVER : " + BIG_SERVER,"green")
-			print colored("LANGUAGE : " + LANGUAGE,"green")
-			print colored("ALL_VERSION : " + ','.join(map(str, ALL_VERSION)), "green")
+			G_setValue('bigServer', yc['bigServer'])
+			G_setValue('language', yc['language'])
+			G_setValue('allVersion', yc['allVersion'])
+			G_setValue('svnInfo', yc['svnInfo'])
+
+			print colored("BIG_SERVER : " + G_getValue('bigServer'),"green")
+			print colored("LANGUAGE : " + G_getValue('language'),"green")
+			print colored("ALL_VERSION : " + ','.join(map(str, G_getValue('allVersion'))), "green")
+
 		except yaml.YAMLError as exc:
 			print(exc)
 
 
 def package():
-	for version in ALL_VERSION:
-		packup.package(BIG_SERVER, LANGUAGE, version)
+	for version in G_getValue('allVersion'):
+		packup.package(version)
 
 def SVNcommit():
 	pass
 
 if __name__ == '__main__':
+	G_init()
+
 	readConfig()
 
 	print("")

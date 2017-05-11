@@ -78,3 +78,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+
+# hotUpdate
+*.pyc
+resource1

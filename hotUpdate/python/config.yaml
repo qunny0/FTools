@@ -1,3 +1,7 @@
+svnInfo:
+ usr: fubei
+ password: i5AsBXhQ
+ path: http://%s@svn.raysns.com/repos/modernwarfare/client/branches/TencentBranch
 bigServer: Germany
 language: cn
 allVersion:

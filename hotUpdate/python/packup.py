@@ -9,8 +9,10 @@ BIG_SERVER=''
 LANGUAGE=''
 PACKAGE_VERSION=''
 UPD_PATH = ''
+SVN_ACCOUNT = ''
 
 CURRENT_DIR = ''
+
 
 
 # _, o = uu_executeCommand('ls')
@@ -42,33 +44,36 @@ CURRENT_DIR = ''
 
 # 处理碎图资源
 def handleFragmentRes():
-	oldFragRes = "../resource1"
+	oldFragRes = "../resource1/"
 	newFragRes = "../resource2"
 
-	# os.makedirs(oldFragRes)
+	svnInfo = G_getValue('svnInfo')
+	svnPath = svnInfo['path']
+	svnUsr = svnInfo['usr']
+	svnPassword = svnInfo['password']
+	svnFullPath = svnPath%(svnUsr)
+	fragmentResSVNPath = svnFullPath + "/projects/Tank/ResEmpireWar"
 
 	if not os.path.exists(oldFragRes):
 		os.makedirs(oldFragRes)
+		os.chdir(oldFragRes)
 
+		svnCmd = "svn checkout " + fragmentResSVNPath + " --username " + svnUsr + " --password " + svnPassword
+		print svnCmd
+		uu_executeProcess(svnCmd)
+		# uu_executeCommand(svnCmd)
+
+	# print svnFullPath
 
 	# os.chdir(CURRENT_DIR)
 
-def package(_bigServer, _language, _packageVersion):
-
-	global BIG_SERVER
-	global LANGUAGE
+def package(_packageVersion):
 	global PACKAGE_VERSION
 	global CURRENT_DIR
 
-	BIG_SERVER = _bigServer
-	LANGUAGE = _language
-	PACKAGE_VERSION = _packageVersion
-	UPD_PATH = "../updPackageFile/" + BIG_SERVER + "/"
-
-	print colored("begin package : " + BIG_SERVER + "  " + LANGUAGE + "  " + str(PACKAGE_VERSION) + "  " + UPD_PATH, "green")
-
 	CURRENT_DIR = os.getcwd()
+	PACKAGE_VERSION = _packageVersion
 
-	_, o = uu_executeCommand('source svnAccount.in')
+	print colored("begin package : " + str(PACKAGE_VERSION), "green")
 
 	handleFragmentRes()
