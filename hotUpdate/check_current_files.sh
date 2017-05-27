@@ -6,7 +6,7 @@ cd $DIR
 
 # 用法 ./check_current_files.sh 大服名 语言 安装包版本 检出到的目录(只有名称，没有路径) 工程源（1或2）
 
-projPath="../TankWar$5/Resources"
+projPath="../TankWar$5"
 bigServer=$1
 language=$2
 packageVersion=$3
@@ -23,28 +23,19 @@ mkdir ./tmpData
 mkdir ./tmpData/$bigServer
 mkdir ./tmpData/$bigServer/$packageVersion
 mkdir ./tmpData/$bigServer/$packageVersion/$toPath
-# mkdir ./tmpData/$bigServer/$packageVersion/$toPath/$packageVersion
 mkdir ./tmpData/$bigServer/$packageVersion/$toPath/luascript
-
-
 
 echo "开始处理文件 check_current_files"
 date
 
-cp -rf $projPath/ ./tmpData/$bigServer/$packageVersion/$toPath/luascript/
-# cp -rf $projPath/ ./tmpData/$bigServer/$packageVersion/$toPath/$packageVersion/
-# cp -rf $projPath/res ./tmpData/$bigServer/$packageVersion/$toPath/$packageVersion/
+rsync -avz --delete --exclude ".svn" $projPath/Resources 		./tmpData/$bigServer/$packageVersion/$toPath/luascript/
+rsync -avz --delete --exclude ".svn" $projPath/ResEmpireWar ./tmpData/$bigServer/$packageVersion/$toPath/luascript/
+
 # if [ -d "./$language" ]; then
 # 	echo "error: ./$language 已存在"
 # 	exit 1
 # fi
-# mv -f ./tmpData/$bigServer/$packageVersion/$toPath/$packageVersion/res/languageRes/$language ./$language
-# rm -rf ./tmpData/$bigServer/$packageVersion/$toPath/$packageVersion/res/languageRes/*
-# mv -f ./$language ./tmpData/$bigServer/$packageVersion/$toPath/$packageVersion/res/languageRes/$language
-# mkdir ./tmpData/$bigServer/$packageVersion/$toPath/$packageVersion/res/UpdatePlist
-# mkdir ./tmpData/$bigServer/$packageVersion/$toPath/$packageVersion/res/UpdatePlist/ccs
-# cp -rf $projPath/ccs2proj/cocosstudio/ccs/UiImages ./tmpData/$bigServer/$packageVersion/$toPath/$packageVersion/res/UpdatePlist/ccs/
+# rm -rf ./tmpData/$bigServer/$packageVersion/$toPath/luascript/Resources/de
 
 echo "结束处理文件 check_current_files"
 date
-

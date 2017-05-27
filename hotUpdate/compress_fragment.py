@@ -48,6 +48,12 @@ compress_t_8888 = 2		# 8888
 g_compress_t_type = 1
 
 
+def checkListWhetherComment(line):
+	strtrip = line.strip()
+	if strtrip.find("--") == 0:
+		return True
+	return False
+
 def getPreLoadImgList(luafile):
 	relPath = luafile[luafile.find("Resources"): len(luafile)]
 	reloutput = False
@@ -62,6 +68,9 @@ def getPreLoadImgList(luafile):
 	f.close()
 
 	for line in lines:
+		if checkListWhetherComment(line):
+			continue
+
 		if line.find("addSpriteFramesWithFile") != -1 :
 			left = line.find("\"")
 			right = line.rfind("\"")
@@ -74,7 +83,7 @@ def getPreLoadImgList(luafile):
 					g_plist_in_startgame.append(filename)
 				else:
 					if st_index == -1 and g_plist_in_startgame.count(filename) > 0:
-						# print("-- remove " + relPath + " >> " + filename)
+						print("-- remove " + relPath + " >> " + filename)
 						g_plist_in_startgame.remove(filename)
 
 				if not reloutput:
@@ -113,10 +122,15 @@ def findPlistOnlyStartgame(respath):
 
 	travelLuaDir(respath)
 
-	sys.stdout = open(ABS_PATH + "/" + FRAMECACHE_PLIST_LIST, "w")
+	print("[plist_file] 118!!" + ABS_PATH + "/" + FRAMECACHE_PLIST_LIST)
+	f = open(ABS_PATH + "/" + FRAMECACHE_PLIST_LIST, "w")
+	content = ""
 	for ele in g_plist_in_startgame:
-		# filename = ele[ele.rfind("/")+1: ele.find(".")]
 		print(ele)
+		content = content + ele + "\n"
+
+	f.write(content)
+	f.close()
 
 	sys.stdout = standard_out
 
@@ -203,7 +217,7 @@ def runCmd(_cmd):
 
 
 def compressPic(src_dir, tgt_dir):
-	cmd = "TexturePacker {0} --data {1} --sheet {2} --max-width 2048 --max-height 2048 --disable-rotation --force-publish --allow-free-size --shape-padding 0 --border-padding 0 --premultiply-alpha --trim-mode None --dither-fs-alpha --multipack --opt {3}"
+	cmd = "TexturePacker {0} --data {1} --sheet {2} --max-width 2048 --max-height 2048 --disable-rotation --force-publish --allow-free-size --shape-padding 2 --border-padding 0 --premultiply-alpha --trim-mode None --dither-fs-alpha --multipack --opt {3}"
 	tgtName = src_dir.split('/')[-1] + ""
 	name = tgtName + "{n}"
 	imgFormat = "RGBA4444"
@@ -250,7 +264,7 @@ def handleTexture(compressType):
 
 
 if __name__ == '__main__':
-	findPlistOnlyStartgame("../TankWar1/Resources/")
+	findPlistOnlyStartgame("../TankWar2/Resources/")
 
 	removeDir(OUTPUT_PATH+"update_pic")
 

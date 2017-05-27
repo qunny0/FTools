@@ -1,10 +1,10 @@
 //  Created by fym on 16/8/4.
 
 #include "FileEncrypt.h"
+#include <stdio.h>
 
 //  参数 需要处理的文件路径
 // string fileSourcePath = "newfileSourcePath";
-
 int main(int argc, char* argv[])
 {
 	printf("--[main]-- %d input: %s output: %s\n", argc, argv[1], argv[2]);
@@ -13,10 +13,9 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-    FileEncrypt *fe = new FileEncrypt(argv[2]);
+    FileEncrypt *fe = new FileEncrypt();
     string readPath = argv[1];
-    // fe->setOutputPath(argv[2]);
+    fe->setOutputPath(argv[2]);
     fe->FindAllFile(readPath);
-
     return 0;
 }

@@ -28,20 +28,21 @@ def readConfig():
 
 def package():
 	for version in G_getValue('allVersion'):
+		print ""
 		packup.package(version)
 
 def SVNcommit():
 	pass
 
 if __name__ == '__main__':
+	currentDir = os.path.abspath(os.path.join(os.path.dirname(__file__)))
+	os.chdir(currentDir)
+	print currentDir
+
 	G_init()
 
 	readConfig()
 
-	print("")
-
 	package()
-
-	print("")
 
 	SVNcommit()

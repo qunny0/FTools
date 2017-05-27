@@ -22,15 +22,14 @@ using namespace std;
 class FileEncrypt
 {
 public:
-	FileEncrypt(const char* outputpath);
-
     void FindAllFile(string folderPath);
     void encryptFileByName(string pFileName);
     bool saveFile2(string pFileName,FILE *file);
+    void setOutputPath(const char* outputpath);
     unsigned char* getFileData(const char* pszFileName, const char* pszMode, unsigned long * pSize);
-
+    
 private:
-	string _outputPath;
+    string _outputPath;
 };
 
 #endif /* defined(__FileEncrypt__encrypt__) */

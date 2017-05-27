@@ -84,7 +84,7 @@ def deletePlistInStartgame(delepath):
 
 def copyUpdateTooZip():
     updPicPath = "./update_pic/"
-    zippath = "./tmpData/" + bigServer + "/" + packageVersion + "/willZipResAndSrcFile/luascript/boatImage/upd_pic"
+    zippath = "./tmpData/" + bigServer + "/" + packageVersion + "/willZipResAndSrcFile/luascript/Resources/boatImage/upd_pic"
     print("85 " + updPicPath + " -> " + zippath)
     dir_copyTree(updPicPath, zippath)
 
@@ -105,4 +105,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

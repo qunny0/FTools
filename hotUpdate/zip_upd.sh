@@ -8,24 +8,24 @@ cd $DIR
 
 bigServer=$1
 packageVersion=$2
-updPath="$( cd ../sdk_pub/$bigServer && pwd )"
+updPath="$( cd ../updPackageFile/$bigServer && pwd )"
 resVersion=$3
 oldResVersion=$[$resVersion-1]
 
-cd ./tmpData/$bigServer/$packageVersion/willZipResAndSrcFile/Encrypt/luascript
+cd ./tmpData/$bigServer/$packageVersion/willZipResAndSrcFile/Encrypt/luascript/Resources/
 
-if [[ ! -d "$updPath/clientcdn/updtest/$packageVersion/$resVersion/full" ]]; then
-	mkdir "$updPath/clientcdn/updtest/$packageVersion/$resVersion"
-	mkdir "$updPath/clientcdn/updtest/$packageVersion/$resVersion/full"
+if [[ ! -d "$updPath/zipfiles/updtest/$packageVersion/$resVersion/full" ]]; then
+	mkdir "$updPath/zipfiles/updtest/$packageVersion/$resVersion"
+	mkdir "$updPath/zipfiles/updtest/$packageVersion/$resVersion/full"
 fi
-if [[ ! -d "$updPath/clientcdn/updtest/$packageVersion/$resVersion/part" ]]; then
-	mkdir "$updPath/clientcdn/updtest/$packageVersion/$resVersion"
-	mkdir "$updPath/clientcdn/updtest/$packageVersion/$resVersion/part"
+if [[ ! -d "$updPath/zipfiles/updtest/$packageVersion/$resVersion/part" ]]; then
+	mkdir "$updPath/zipfiles/updtest/$packageVersion/$resVersion"
+	mkdir "$updPath/zipfiles/updtest/$packageVersion/$resVersion/part"
 fi
 #  全包
-cp -f $updPath/clientcdn/upd/$packageVersion/$oldResVersion/full/luascript.zip $updPath/clientcdn/updtest/$packageVersion/$resVersion/full/luascript.zip
-zip -ru $updPath/clientcdn/updtest/$packageVersion/$resVersion/full/luascript.zip ./* -x *.DS_Store*
+cp -f $updPath/zipfiles/upd/$packageVersion/$oldResVersion/full/luascript.zip $updPath/zipfiles/updtest/$packageVersion/$resVersion/full/luascript.zip
+zip -ru $updPath/zipfiles/updtest/$packageVersion/$resVersion/full/luascript.zip ./* -x *.DS_Store*
 
 #  分包
-rm -rf $updPath/clientcdn/updtest/$packageVersion/$resVersion/part/luascript.zip
-zip -r $updPath/clientcdn/updtest/$packageVersion/$resVersion/part/luascript.zip ./* -x *.DS_Store*
+rm -rf $updPath/zipfiles/updtest/$packageVersion/$resVersion/part/luascript.zip
+zip -r $updPath/zipfiles/updtest/$packageVersion/$resVersion/part/luascript.zip ./* -x *.DS_Store*

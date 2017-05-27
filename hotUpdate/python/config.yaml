@@ -1,7 +1,8 @@
 svnInfo:
  usr: fubei
  password: i5AsBXhQ
- path: http://%s@svn.raysns.com/repos/modernwarfare/client/branches/TencentBranch
+ path: http://%s@svn.raysns.com/repos/modernwarfare/client/branches/GermanyBranch
+ updPath: http://$ @publish.rayjoy.com/repos/modernwar/publish/client/europe/tankheroclient/updPackageFile/$bigServer
 bigServer: Germany
 language: cn
 allVersion:
