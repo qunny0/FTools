@@ -83,3 +83,5 @@ sysinfo.txt
 # hotUpdate
 *.pyc
 resource1
+
+.svn
