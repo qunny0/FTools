@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour {
 
 	private int level = 3;
 
+	public int playerFoodPoints = 100;
+
+	[HideInInspector] public bool playersTurn = true;
+
 	// Awake is always called before any Start functions
 	void Awake () {
 		if (instance == null) {
@@ -27,6 +31,9 @@ public class GameManager : MonoBehaviour {
 		InitGame ();
 	}
 
+	public void GameOver (int level) {
+		
+	}
 
 	void InitGame() {
 		boardScript.SetupScene (level);

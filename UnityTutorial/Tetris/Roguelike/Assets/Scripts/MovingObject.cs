@@ -41,7 +41,7 @@ public abstract class MovingObject : MonoBehaviour {
 		// Check if anything was hit
 		if (hit.transform == null) {
 			// If nothing was hit, start SmoothMovement co-routine passing in the vector2 end as destination
-			StartCoroutine (SmoothMovement(end));
+			StartCoroutine (SmoothMovement (end));
 
 			return true;
 		}
@@ -49,7 +49,7 @@ public abstract class MovingObject : MonoBehaviour {
 		return false;
 	}
 
-	protected IEnumerable SmoothMovement(Vector3 end) {
+	protected IEnumerator SmoothMovement(Vector3 end) {
 		float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
 
 		while (sqrRemainingDistance > float.Epsilon) {
