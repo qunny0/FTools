@@ -60,4 +60,12 @@
   > 2. 继承
   > 3. Animation controller transition
 
+- **Writing the Enemy Script**
+
+- **Adding UI & Level Transitions**
+
+- **Audio and Sound Manager**
+
+- **Adding mobile Controls**
+
 unity什么情况下应该有多个scene
