@@ -74,6 +74,8 @@ namespace PChatServer
             {
                 _tcpClient = _tcpListener.AcceptTcpClient();
 
+                Log.i("listen client connect");
+
                 var clientStream = _tcpClient.GetStream();
 
                 _clientWriter = new StreamWriter(clientStream);
@@ -90,9 +92,18 @@ namespace PChatServer
         {
             while (true) 
             {
-                String message = _clientReader.ReadLine();
+                try {
+                    String message = _clientReader.ReadLine();
 
-                Log.i(" -- receive : " + message);
+                    Log.i(" -- receive : " + message);
+
+                    _clientWriter.WriteLine(message);
+
+                    Log.i(" -- response: " + message);
+                }
+                catch {
+                    
+                }
             }
         }
     }
