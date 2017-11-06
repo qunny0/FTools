@@ -7,7 +7,7 @@
         {
             "taskName": "build",
             "args": [
-                "${workspaceRoot}/PChatClient.csproj"
+                "${workspaceRoot}/PChatServer.csproj"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"

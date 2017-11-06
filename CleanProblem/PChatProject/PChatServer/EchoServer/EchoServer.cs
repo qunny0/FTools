@@ -74,7 +74,9 @@ namespace PChatServer
             {
                 _tcpClient = _tcpListener.AcceptTcpClient();
 
-                Log.i("listen client connect");
+                var clientAddress = ((IPEndPoint)_tcpClient.Client.RemoteEndPoint).Address.ToString();
+
+                Log.i("listen client connect : " + clientAddress);
 
                 var clientStream = _tcpClient.GetStream();
 
@@ -93,13 +95,13 @@ namespace PChatServer
             while (true) 
             {
                 try {
-                    String message = _clientReader.ReadLine();
+                    // String message = _clientReader.ReadLine();
 
-                    Log.i(" -- receive : " + message);
+                    // Log.i(" -- receive : " + message);
 
-                    _clientWriter.WriteLine(message);
+                    // _clientWriter.WriteLine(message);
 
-                    Log.i(" -- response: " + message);
+                    // Log.i(" -- response: " + message);
                 }
                 catch {
                     
