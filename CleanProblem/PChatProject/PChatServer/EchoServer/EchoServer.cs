@@ -95,9 +95,9 @@ namespace PChatServer
             while (true) 
             {
                 try {
-                    // String message = _clientReader.ReadLine();
+                    String message = _clientReader.ReadLine();
 
-                    // Log.i(" -- receive : " + message);
+                    Log.i(" -- receive : " + message);
 
                     // _clientWriter.WriteLine(message);
 
