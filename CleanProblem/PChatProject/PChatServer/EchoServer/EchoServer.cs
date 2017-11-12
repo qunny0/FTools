@@ -22,6 +22,8 @@ namespace PChatServer
 
         private TcpClient _tcpClient;
 
+        private NetworkStream _clientStream;
+
         private StreamWriter _clientWriter;
 
         private StreamReader _clientReader;
@@ -78,11 +80,11 @@ namespace PChatServer
 
                 Log.i("listen client connect : " + clientAddress);
 
-                var clientStream = _tcpClient.GetStream();
+                _clientStream = _tcpClient.GetStream();
 
-                _clientWriter = new StreamWriter(clientStream);
+                _clientWriter = new StreamWriter(_clientStream);
 
-                _clientReader = new StreamReader(clientStream);
+                _clientReader = new StreamReader(_clientStream);
 
                 Thread clientT = new Thread(this.clientRun);
 
@@ -95,18 +97,34 @@ namespace PChatServer
             while (true) 
             {
                 try {
-                    String message = _clientReader.ReadLine();
+                    byte[] buffer = new byte[256];
 
-                    Log.i(" -- receive : " + message);
+                    var len = _clientStream.Read(buffer, 0, buffer.Length);
 
-                    // _clientWriter.WriteLine(message);
+                    var bstr = System.Text.Encoding.Default.GetString(buffer);
 
-                    // Log.i(" -- response: " + message);
+                    Log.i(" -- receive : " + bstr);
+
+                    if (bstr == "q") {
+                        close();
+                    }
+                    else {
+                        _clientStream.Write(buffer, 0, buffer.Length);
+                    }
                 }
                 catch {
                     
                 }
             }
+        }
+
+        protected void close()
+        {
+            _listenThread.Abort();
+
+            _tcpClient.Close();
+
+            _tcpListener.Stop();
         }
     }
 }

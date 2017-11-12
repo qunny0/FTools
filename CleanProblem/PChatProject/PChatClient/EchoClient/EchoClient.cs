@@ -58,6 +58,10 @@ namespace PChatClient
                 Console.WriteLine("input: {0} : {1} ", instr, str.Length);
 
                 _networkStream.Write(str, 0, str.Length);
+
+                if (instr == "q") {
+                    close();
+                }
             }
         }
 
@@ -73,12 +77,16 @@ namespace PChatClient
                 var bytes = _networkStream.Read(data, 0, data.Length);
                 responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
                 Console.WriteLine("Received: {0}", responseData);
+
+
             }
         }
 
         public void close()
         {
-            // _tcpClient.close();
+            _thread.Abort();
+
+            _tcpClient.Close();
         }
     }
 }
