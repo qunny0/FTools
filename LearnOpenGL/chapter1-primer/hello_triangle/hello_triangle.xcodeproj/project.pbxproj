@@ -64,7 +64,7 @@
 		B51B4B9620F7694400D18513 = {
 			isa = PBXGroup;
 			children = (
-				B51B4BA120F7694500D18513 /* chapter1-primer-hello_window */,
+				B51B4BA120F7694500D18513 /* hello_triangle */,
 				B51B4BA020F7694500D18513 /* Products */,
 				B51B4BA920F769CC00D18513 /* Frameworks */,
 			);
@@ -78,13 +78,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B51B4BA120F7694500D18513 /* chapter1-primer-hello_window */ = {
+		B51B4BA120F7694500D18513 /* hello_triangle */ = {
 			isa = PBXGroup;
 			children = (
 				B51B4BA220F7694500D18513 /* main.mm */,
 				B5A3B5E420F785B800D4450D /* glad.c */,
 			);
-			path = "chapter1-primer-hello_window";
+			path = hello_triangle;
 			sourceTree = "<group>";
 		};
 		B51B4BA920F769CC00D18513 /* Frameworks */ = {
@@ -135,7 +135,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B51B4B9A20F7694400D18513 /* Build configuration list for PBXProject "chapter1-primer-hello_window" */;
+			buildConfigurationList = B51B4B9A20F7694400D18513 /* Build configuration list for PBXProject "hello_triangle" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -301,7 +301,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B51B4B9A20F7694400D18513 /* Build configuration list for PBXProject "chapter1-primer-hello_window" */ = {
+		B51B4B9A20F7694400D18513 /* Build configuration list for PBXProject "hello_triangle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B51B4BA420F7694500D18513 /* Debug */,
