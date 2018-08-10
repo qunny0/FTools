@@ -1,0 +1,183 @@
+---
+title: Lua语言进阶
+date: 2018-08-10 22:36:44
+tags:
+---
+
+---
+
+### 0x01 Lua中认为什么值为假？
+```lua
+    nil
+    false
+```
+
+### 0x02 语法举例
+> 1. 当在一个数字后面写 .. 时，必须加上空格以防止被解释出错。
+> 2. lua会自动在string 和numbers之间自动运行类型转换，当一个字符串使用算术操作符时，string就会被转化成数字。
+
+```lua
+    print("10"+1)  
+        11.0
+    print(12..13)  
+        malformed number near '12..13'
+    print(12 .. 13)
+        1213
+```
+
+> 3. 默认索引从1开始，默认索引优先级大于[1]; ["a"]索引优先级大于a。
+```lua
+1
+    local value = {"index", index="index", [1]=1}
+    print(value[value[1]])
+    
+    Answer:
+    index
+
+2
+    local a = 1  
+    local b = "1"  
+    local t = {a=1, ["a"]=2, [a]=3}  
+    print(t.a, t["a"], t[t.a], t.b, t[b])  
+    
+    Answer:
+    2   2   nil nil nil
+
+3.
+    local tmp = {["1"]="11","22",[3]="33","44"}
+    for i,v in ipairs(tmp) do
+        print(i,v)
+    end
+    
+    Answer:
+        1   22
+        2   44
+        3   33
+
+4.
+    local tmp = {
+        ["1"] = "11",
+        "22",
+        [3] = "33",
+        "44",
+        "55"
+    }  
+    for i,v in ipairs(tmp) do
+        print(i,v)
+    end
+    
+    Answer:
+        1   22
+        2   44
+        3   55
+```
+
+> 4. Lua 语言中字符串可以使用以下三种方式来表示：单引号间的一串字符；双引号间的一串字符；[[和]]间的一串字符。
+```lua
+    local stringtable = [[  
+        local a = 1  
+        print(a)  
+    ]]  
+    print(stringtable)  
+    
+    Answer:
+        local a = 1
+        print(a)
+```
+
+> 5. 多返回值如果不接收，则放弃。
+```lua
+    function f123() return 1,2,3 end
+    function f456() return 4,5,6 end
+    print(f123(),f456())
+    print(f456(),f123())
+        
+        Answer:
+            1   4   5   6
+            4   1   2   3
+```
+
+### 对下面几段代码进行优化，并简述优化的原理。
+> https://wuzhiwei.net/lua_performance/
+> https://www.cnblogs.com/YYRise/p/7082637.html
+```
+1
+    for _, v1 in ipairs(a) do
+        for_, v2 in ipairs(b) do
+            local x = math.sin(v1) * math.sin(v2)
+        end
+    end
+
+优化后
+使用全局变量，Lua预编译在生成的指令，需要添加获取类似以下代码：
+    GETGLOBAL 0 0 ; a
+    GETGLOBAL 1 1 ; b
+    ADD 0 0 1
+    SETGLOBAL 0 0 ; a
+Lua预编译能够在寄存器存储剩余的局部变量，结果在Lua中访问局部变量非常快。
+
+    local tsin = math.sin
+    for _, v1 in ipairs(a) do
+        for_, v2 in ipairs(b) do
+            local x = tsin(v1) * tsin(v2)
+        end
+    end
+```
+
+```lua
+2
+    for i = 1, 2000000 do 
+        local a = {}
+        a[1] = 1; a[2] = 2; a[3] = 3
+    end
+    
+优化后
+    通过给出新表合适的大小，这很容易避免那些初始的再哈希。
+    for i = 1, 200000 do
+        local a = {true, true, true}
+        a[1] = 1; a[2] = 2; a[3] = 3
+    end
+```
+
+```lua
+3
+    local s = ""
+    for i = 1, i < 300000 do 
+        s = s .. 'a'
+    end
+    
+优化后
+    在大字符串连接中，我们应避免..。应用table来模拟buffer，然后concat得到最终字符串。
+    local s = ''
+    local t = {}
+    for i = 1,300000 do
+        t[#t + 1] = 'a'
+    end
+    s = table.concat( t, '')
+    b = os.clock()
+```
+
+### 编写一个函数，深度clone一个传入的lua对象。
+> https://2013.mutoo.im/2015/10/deepclone-in-lua.html
+```lua
+function deepCopy(object)
+    local lookup_table = {}
+    local function _copy(object)
+        if type(object) ~= "table" then
+            return object
+        elseif lookup_table[object] then
+            return lookup_table[object]
+        end
+
+        local new_table = {}
+        lookup_table[object] = new_table
+        for key, value in pairs(object) do
+            new_table[_copy(key)] = _copy(value)
+        end
+        return setmetatable(new_table, getmetatable(object))
+    end
+
+    return _copy(object)
+end
+
+```
