@@ -36,3 +36,9 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
+
+#### QA
+- 修改主题后发布丢失css
+``` bash
+$ hexo clean
+```
