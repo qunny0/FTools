@@ -6,7 +6,7 @@ tags:
 
 ---
 
-### 0x01 Lua中认为什么值为假？
+### 0x01 Lua中什么值为假？
 ```lua
     nil
     false
@@ -17,15 +17,16 @@ tags:
 > 2. lua会自动在string 和numbers之间自动运行类型转换，当一个字符串使用算术操作符时，string就会被转化成数字。
 
 ```lua
-    print("10"+1)  
-        11.0
-    print(12..13)  
-        malformed number near '12..13'
-    print(12 .. 13)
-        1213
+    print("10"+2)  
+        12.0
+    print(11..12)  
+        malformed number near '11..12'
+    print(11 .. 12)
+        1112
 ```
 
 > 3. 默认索引从1开始，默认索引优先级大于[1]; ["a"]索引优先级大于a。
+
 ```lua
 1
     local value = {"index", index="index", [1]=1}
