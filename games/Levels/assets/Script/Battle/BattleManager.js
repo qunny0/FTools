@@ -9,22 +9,35 @@ cc.Class({
 
         _arrCard: null,
 
+        _arrCardOriginalPoint: null,
+
         _score: 0,
 
         _stepCount: 0,
+
+        _battle: null,
     },
 
-    ctor: function () {
+    ctor: function (pbattle) {
 
         this._arrCard = [];
+
+        this._arrCardOriginalPoint = [];
 
         this._score = 0;
 
         this._stepCount = 0;
+
+        this._battle = pbattle;
     },
 
     pushcard: function(index, obj) {
         this._arrCard[index] = obj;
+
+        this._arrCardOriginalPoint[index] = new cc.Vec2(obj.x, obj.y);
+
+        console.log('in', index, this._arrCardOriginalPoint[index]);
+
     },
 
     getCardByIndex: function(index) {
@@ -79,6 +92,8 @@ cc.Class({
 
         // console.log(idx, toIndex, ctype, clevel, ttype, tlevel);
 
+        // console.log(ctype == BattleUtils.CARD_TYPE.YELLOW, clevel == tlevel, ttype == BattleUtils.CARD_TYPE.YELLOW);
+        
         if (ctype == BattleUtils.CARD_TYPE.YELLOW) {
             if (clevel == tlevel && ttype == BattleUtils.CARD_TYPE.YELLOW) {
                 return BattleUtils.MOVE_RES.YELLOW_COMBINE;
@@ -109,7 +124,30 @@ cc.Class({
 
     },
 
-    moveTo (oidx, tidx) {
-        this._arrCard[oidx] = this._arrCard[tidx];
+    moveCard (oidx, tidx) {
+        let obj = this._arrCard[oidx];
+
+        // console.log(this._arrCardOriginalPoint);
+
+        // console.log(tidx, this._arrCardOriginalPoint[tidx]);
+
+        obj.getComponent('Card').setPoint(this._arrCardOriginalPoint[tidx]);
+
+        obj.getComponent('Card').resetIndex(tidx);
+        
+        this._arrCard[tidx] = this._arrCard[oidx];
     },
+
+    setCard (idx, card) {
+        this._arrCard[idx] = card;
+    },
+
+    getPointByIndex (idx) {
+        return this._arrCardOriginalPoint[idx];
+    },
+
+    generateCard (idx, dir) {
+        this._battle.generateCard(idx, dir);
+    }
+
 });

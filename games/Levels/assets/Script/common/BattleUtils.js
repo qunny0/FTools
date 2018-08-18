@@ -48,20 +48,45 @@ exports.getIndexByPoint = function (pt) {
 exports.getToIndexByDir = function (oidx, dir) {
     let topt = this.getPointByIndex(oidx); 
 
-    if (dir == BattleUtils.CARD_MOVE_DIR.TOP) {
+    if (dir == this.CARD_MOVE_DIR.TOP) {
         topt.y += 1;
     }
-    else if (dir == BattleUtils.CARD_MOVE_DIR.BOTTOM) {
+    else if (dir == this.CARD_MOVE_DIR.BOTTOM) {
         topt.y -= 1;
     }
-    else if (dir == BattleUtils.CARD_MOVE_DIR.LEFT) {
-        top.x -= 1;
+    else if (dir == this.CARD_MOVE_DIR.LEFT) {
+        topt.x -= 1;
     }
-    else if (dir == BattleUtils.CARD_MOVE_DIR.RIGHT) {
-        top.x += 1;
+    else if (dir == this.CARD_MOVE_DIR.RIGHT) {
+        topt.x += 1;
     }
 
-    let toIndex = BattleUtils.getIndexByPoint(topt);
+    let toIndex = this.getIndexByPoint(topt);
 
     return toIndex;
+};
+
+exports.checkMoveValid = function (ret) {
+    if (ret == this.CARD_MOVE_DIR.TOP ||
+        ret == this.CARD_MOVE_DIR.BOTTOM ||
+        ret == this.CARD_MOVE_DIR.LEFT ||
+        ret == this.CARD_MOVE_DIR.RIGHT) {
+            return true;
+        }
+
+    return false;
+};
+
+exports.getRandomCardType = function () {
+    let ran = Math.floor(Math.random() * 101);
+
+    if (ran <= 40) {
+        return this.CARD_TYPE.YELLOW;
+    }
+
+    if (ran <= 76) {
+        return this.CARD_TYPE.BLUE;
+    }
+
+    return this.CARD_TYPE.RED;
 }

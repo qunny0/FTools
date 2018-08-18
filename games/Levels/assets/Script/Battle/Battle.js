@@ -52,7 +52,7 @@ cc.Class({
         this.lbScore.string = '';
         this.lbBest.string = '';
         
-        this._battleManager = new BattleManager();
+        this._battleManager = new BattleManager(this);
         console.log('battleManager', this._battleManager.state);
 
         this.initGame();
@@ -115,7 +115,26 @@ cc.Class({
 
             this._battleManager.pushcard(i, obj);
         }
-    }
+    },
+
+    generateCard(idx, dir) {
+        var ct = BattleUtils.getRandomCardType();
+
+        var obj = cc.instantiate(this.cardPb);
+
+        obj.getComponent('Card').setData(this._battleManager, idx, ct, 1);
+
+        this.cardPanel.addChild(obj);
+
+        let op = this._battleManager.getPointByIndex(idx);
+
+        obj.x = op.x;
+        obj.y = op.y;
+
+        // this._battleManager.pushcard(idx, obj);
+
+        this._battleManager.setCard(idx, obj);
+    },
 
     // update (dt) {},
 });
