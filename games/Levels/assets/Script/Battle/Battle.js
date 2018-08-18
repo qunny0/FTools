@@ -76,7 +76,7 @@ cc.Class({
             }
             else if (blueCount < 9) {
                 blueCount += 1;
-                initArr.push([BattleUtils.CARD_TYPE.BULE, 1]);
+                initArr.push([BattleUtils.CARD_TYPE.BLUE, 1]);
             }
             else {
                 redCount += 1;

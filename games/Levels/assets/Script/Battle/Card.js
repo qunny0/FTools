@@ -52,7 +52,7 @@ cc.Class({
         }
         else if (type == 'touchmove') {
 
-            console.log('this._moveDir', this._moveDir);
+            // console.log('this._moveDir', this._moveDir);
 
 
             if (this._moveDir == BattleUtils.CARD_MOVE_DIR.INVALID) {
@@ -69,7 +69,7 @@ cc.Class({
                 let absOfx = Math.abs(ofx);
                 let absOfY = Math.abs(ofy);
 
-                console.log('', absOfx, absOfY);
+                // console.log('', absOfx, absOfY);
 
                 if (absOfx > 10 || absOfY > 10) {
                     if (absOfx > absOfY) {
@@ -94,12 +94,8 @@ cc.Class({
                 let startPoint = e.touch.getStartLocation();
                 let conPoint = e.touch.getLocation();
 
-                // let ofx = conPoint.x - startPoint.x;
-                // let ofy = conPoint.y - startPoint.y;
-
                 let offPoint = new cc.Vec2(0, 0);
                 if (this._moveDir == BattleUtils.CARD_MOVE_DIR.TOP) {
-                    // offPoint.y 
                     let offy = conPoint.y - startPoint.y;
                     if (offy > 0 && offy < 180) {
                         offPoint.y += offy;
@@ -124,7 +120,6 @@ cc.Class({
                     }
                 }
 
-                // let targetPoint = this.node.x
                 this.node.x = this._originPoint.x + offPoint.x;
                 this.node.y = this._originPoint.y + offPoint.y;
             }
@@ -143,34 +138,20 @@ cc.Class({
 
         var ret = this._battleManager.checkMove(this._index, dir);
 
-        console.log('setMoveDir', ret, dir)
+        // console.log('setMoveDir', ret, dir)
 
         if (ret == 1) {
             this._moveDir = BattleUtils.CARD_MOVE_DIR.INVALID;
             return ;
         }
 
-        if (ret == 0) {
+        if (ret == BattleUtils.MOVE_RES.BLUE_COMBINE ||
+            ret == BattleUtils.MOVE_RES.YELLOW_COMBINE ||
+            ret == BattleUtils.MOVE_RES.BLUE_RED ||
+            ret == BattleUtils.MOVE_RES.BLUE_YELLOW) {
             this._moveDir = dir;
             return ;
         }
-
-        // if (ret == 0) {
-
-        // }
-        // else if (ret == 1) {
-
-        // }
-        // else {
-
-        // }
-
-        // if (checkDir(dir)) {
-
-        // }
-        // else {
-
-        // }
     },
 
     start () {
@@ -192,5 +173,19 @@ cc.Class({
         this._originPoint = new cc.Vec2(this.node.x, this.node.y);
     },
 
-    // update (dt) {},
+    getType () {
+        return this._type;
+    },
+
+    getIndex () {
+        return this._index;
+    },
+
+    getLevel () {
+        return this._level;
+    },
+
+    getCardInfo () {
+        return [this._type, this._level]
+    }
 });
