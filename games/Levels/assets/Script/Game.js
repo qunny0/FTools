@@ -2,21 +2,25 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        label: {
+        battlePb: {
             default: null,
-            type: cc.Label
-        },
-        // defaults, set visually when attaching this script to the Canvas
-        text: 'Hello, World!'
+            type: cc.Prefab
+        }
+        
     },
 
     // use this for initialization
     onLoad: function () {
-        this.label.string = this.text;
+    },
+
+    start: function () {
+        let inst = cc.instantiate(this.battlePb);
+        this.node.addChild(inst);
     },
 
     // called every frame
     update: function (dt) {
 
     },
+
 });
