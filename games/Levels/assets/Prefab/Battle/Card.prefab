@@ -100,7 +100,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "4cR/zBxpdCoLxDv8fGr920"
+    "_id": "8c4r4qlldF2piYvKnCc58e"
   },
   {
     "__type__": "84081r1/31HxIdED/fX+/tT",
@@ -110,7 +110,9 @@
       "__id__": 1
     },
     "_enabled": true,
-    "_id": "02JMw+daxDRLTh5ku6tcXQ"
+    "_type": 0,
+    "_level": 0,
+    "_id": "ce8i2FxG1M/KejbKe1MCZG"
   },
   {
     "__type__": "cc.PrefabInfo",
