@@ -3,12 +3,20 @@ exports.X = 5;
 
 exports.Y = 5;
 
-exports.CARD_TYPE= {
+exports.CARD_TYPE = {
     'BULE': 0,
     'YELLOW': 1,
     'RED': 2,
 };
 
+exports.CARD_MOVE_DIR = {
+    'STAND': 0,
+    'TOP': 1,
+    'BOTTOM': 2,
+    'LEFT': 3,
+    'RIGHT': 4,
+    'INVALID': 5,
+},
 
 exports.CARD_COLOR = [
     new cc.Color(81, 151, 213, 255),

@@ -109,9 +109,11 @@ cc.Class({
             obj.x = pt.x * 140;
             obj.y = pt.y * 190;
 
-            obj.getComponent('Card').setData(initArr[i][0], initArr[i][1]);
+            obj.getComponent('Card').setData(this._battleManager, i, initArr[i][0], initArr[i][1]);
 
             this.cardPanel.addChild(obj);
+
+            this._battleManager.pushcard(i, obj);
         }
     }
 
