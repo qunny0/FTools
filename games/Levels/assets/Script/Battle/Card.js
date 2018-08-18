@@ -27,6 +27,7 @@ cc.Class({
 
         _battleManager: null,
 
+        _originPoint: null,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -44,54 +45,96 @@ cc.Class({
         let type = e.type;
         // console.log(type);
 
-        let point = e.touch._point;
+        // let conPoint = e.touch.getStartLocation();
 
-        let conPoint = this.node.convertToNodeSpace(point);
         if (type == 'touchstart') {
-            this._touchStartPoint = conPoint;
+            // this._touchStartPoint = conPoint;
         }
         else if (type == 'touchmove') {
-            if (this._touchStartPoint) {
-                let ofx = conPoint.x - this._touchStartPoint.x;
-                let ofy = conPoint.y - this._touchStartPoint.y;
 
-                console.log('this._moveDir', this._moveDir);
+            console.log('this._moveDir', this._moveDir);
 
-                if (this._moveDir == BattleUtils.CARD_MOVE_DIR.STAND) {
-                    let absOfx = Math.abs(ofx);
-                    let absOfY = Math.abs(ofy);
 
-                    if (absOfx > 10 || absOfY > 10) {
-                        if (absOfx > absOfY) {
-                            if (ofx > 0) {
-                                this.setMoveDir(BattleUtils.CARD_MOVE_DIR.RIGHT);
-                            }
-                            else {
-                                this.setMoveDir(BattleUtils.CARD_MOVE_DIR.LEFT);
-                            }
+            if (this._moveDir == BattleUtils.CARD_MOVE_DIR.INVALID) {
+                return ;
+            }
+
+            if (this._moveDir == BattleUtils.CARD_MOVE_DIR.STAND) {
+                let startPoint = e.touch.getStartLocation();
+                let conPoint = e.touch.getLocation();
+
+                let ofx = conPoint.x - startPoint.x;
+                let ofy = conPoint.y - startPoint.y;
+
+                let absOfx = Math.abs(ofx);
+                let absOfY = Math.abs(ofy);
+
+                console.log('', absOfx, absOfY);
+
+                if (absOfx > 10 || absOfY > 10) {
+                    if (absOfx > absOfY) {
+                        if (ofx > 0) {
+                            this.setMoveDir(BattleUtils.CARD_MOVE_DIR.RIGHT);
                         }
                         else {
-                            if (ofy > 0) {
-                                this.setMoveDir(BattleUtils.CARD_MOVE_DIR.TOP);
-                            }
-                            else {
-                                this.setMoveDir(BattleUtils.CARD_MOVE_DIR.BOTTOM);
-                            }
+                            this.setMoveDir(BattleUtils.CARD_MOVE_DIR.LEFT);
+                        }
+                    }
+                    else {
+                        if (ofy > 0) {
+                            this.setMoveDir(BattleUtils.CARD_MOVE_DIR.TOP);
+                        }
+                        else {
+                            this.setMoveDir(BattleUtils.CARD_MOVE_DIR.BOTTOM);
                         }
                     }
                 }
-                else {
+            }
+            else {
+                let startPoint = e.touch.getStartLocation();
+                let conPoint = e.touch.getLocation();
 
+                // let ofx = conPoint.x - startPoint.x;
+                // let ofy = conPoint.y - startPoint.y;
+
+                let offPoint = new cc.Vec2(0, 0);
+                if (this._moveDir == BattleUtils.CARD_MOVE_DIR.TOP) {
+                    // offPoint.y 
+                    let offy = conPoint.y - startPoint.y;
+                    if (offy > 0 && offy < 180) {
+                        offPoint.y += offy;
+                    }
+                }
+                else if (this._moveDir == BattleUtils.CARD_MOVE_DIR.BOTTOM) {
+                    let offy = conPoint.y - startPoint.y;
+                    if (offy < 0 && offy > -180) {
+                        offPoint.y += offy;
+                    }
+                }
+                else if (this._moveDir == BattleUtils.CARD_MOVE_DIR.LEFT) {
+                    let offx = conPoint.x - startPoint.x
+                    if (offx < 0 && offx > -150) {
+                        offPoint.x += offx;
+                    }
+                }
+                else if (this._moveDir == BattleUtils.CARD_MOVE_DIR.RIGHT) {
+                    let offx = conPoint.x - startPoint.x
+                    if (offx > 0 && offx < 150) {
+                        offPoint.x += offx;
+                    }
                 }
 
-                console.log(ofx, ofy)
+                // let targetPoint = this.node.x
+                this.node.x = this._originPoint.x + offPoint.x;
+                this.node.y = this._originPoint.y + offPoint.y;
             }
         }
-        else if (type == 'touchend') {
-
+        else if (type == 'touchend' || type == 'touchcancel') {
+            this._moveDir = BattleUtils.CARD_MOVE_DIR.STAND;
+            this.node.x = this._originPoint.x;
+            this.node.y = this._originPoint.y;
         }
         else {
-            this._touchStartPoint = null;
             this._moveDir = BattleUtils.CARD_MOVE_DIR.STAND;
         }
     },
@@ -100,17 +143,27 @@ cc.Class({
 
         var ret = this._battleManager.checkMove(this._index, dir);
 
-        console.log(ret)
+        console.log('setMoveDir', ret, dir)
+
+        if (ret == 1) {
+            this._moveDir = BattleUtils.CARD_MOVE_DIR.INVALID;
+            return ;
+        }
 
         if (ret == 0) {
+            this._moveDir = dir;
+            return ;
+        }
 
-        }
-        else if (ret == 1) {
+        // if (ret == 0) {
 
-        }
-        else {
-            
-        }
+        // }
+        // else if (ret == 1) {
+
+        // }
+        // else {
+
+        // }
 
         // if (checkDir(dir)) {
 
@@ -131,14 +184,12 @@ cc.Class({
         this._type = tp;
         this._level = level;
 
-        console.log(this._type, typeof(this._type));
-
         this.node.color = BattleUtils.CARD_COLOR[this._type];
         this.lbLevel.string = this._level;
 
         this.lbIndex.string = idx;
 
-        console.log(this._battleManager);
+        this._originPoint = new cc.Vec2(this.node.x, this.node.y);
     },
 
     // update (dt) {},

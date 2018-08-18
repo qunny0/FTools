@@ -167,7 +167,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_id": "67wWnsr19OYLrouhUWQ0KD"
+    "_id": "d21Z1J0/1KloeYTSgiQPf6"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -266,7 +266,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_id": "09QbDTNEVJs7yD3mknKKkA"
+    "_id": "08gG1DhP5Mb6FNglN0v+i7"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -305,7 +305,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "ebnx9tFAVIDJJFKZswwZ3n"
+    "_id": "a760bratlEmp3x5extuByA"
   },
   {
     "__type__": "84081r1/31HxIdED/fX+/tT",
@@ -327,7 +327,8 @@
     "_touchStartPoint": null,
     "_moveDir": 0,
     "_battleManager": null,
-    "_id": "0aicFm0IVFeZWqAtH2KKQA"
+    "_originPoint": null,
+    "_id": "f03VSq0ARAqqkL08wl9Ri9"
   },
   {
     "__type__": "cc.PrefabInfo",
