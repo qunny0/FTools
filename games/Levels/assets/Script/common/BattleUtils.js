@@ -45,3 +45,23 @@ exports.getIndexByPoint = function (pt) {
     return idx;
 };
 
+exports.getToIndexByDir = function (oidx, dir) {
+    let topt = this.getPointByIndex(oidx); 
+
+    if (dir == BattleUtils.CARD_MOVE_DIR.TOP) {
+        topt.y += 1;
+    }
+    else if (dir == BattleUtils.CARD_MOVE_DIR.BOTTOM) {
+        topt.y -= 1;
+    }
+    else if (dir == BattleUtils.CARD_MOVE_DIR.LEFT) {
+        top.x -= 1;
+    }
+    else if (dir == BattleUtils.CARD_MOVE_DIR.RIGHT) {
+        top.x += 1;
+    }
+
+    let toIndex = BattleUtils.getIndexByPoint(topt);
+
+    return toIndex;
+}

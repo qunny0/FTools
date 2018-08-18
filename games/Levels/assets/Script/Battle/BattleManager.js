@@ -3,34 +3,36 @@ var BattleUtils = require('../common/BattleUtils');
 cc.Class({
 
     properties: {
-        state: "sprite",
+        // state: "sprite",
 
         // _arrCardData: null,
 
         _arrCard: null,
+
+        _score: 0,
+
+        _stepCount: 0,
     },
 
     ctor: function () {
-        cc.log('ctor');    // true
+
         this._arrCard = [];
+
+        this._score = 0;
+
+        this._stepCount = 0;
     },
 
     pushcard: function(index, obj) {
         this._arrCard[index] = obj;
     },
 
-    // init: function () {
-
-    //     let count = BattleUtils.X * BattleUtils.Y
-    //     for (var i = 0; i < count; i++) {
-    //         _arrCardData.push()
-    //     }
-    // }
+    getCardByIndex: function(index) {
+        return this._arrCard[index];
+    },
 
     /**
-     * -1：超过边界
-     * 1: yellow combine
-     * 2: blue combine
+     * BattleUtils.MOVE_RES
      */
     checkMove: function(idx, dir) {
 
@@ -101,5 +103,13 @@ cc.Class({
         }
 
         return BattleUtils.MOVE_RES.INVALID;
-    }
+    },
+
+    actionMove: function (idx, dir, moveres) {
+
+    },
+
+    moveTo (oidx, tidx) {
+        this._arrCard[oidx] = this._arrCard[tidx];
+    },
 });

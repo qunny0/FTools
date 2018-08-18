@@ -21,9 +21,9 @@ cc.Class({
 
         _level: 0,
 
-        _touchStartPoint: null,
-
         _moveDir: 0,
+
+        _moveRes: 0,
 
         _battleManager: null,
 
@@ -39,6 +39,7 @@ cc.Class({
         this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onTouch, this);
 
         this._moveDir = BattleUtils.CARD_MOVE_DIR.STAND;
+        this._moveRes = BattleUtils.MOVE_RES.INVALID;
     },
 
     onTouch(e) {
@@ -149,6 +150,7 @@ cc.Class({
             ret == BattleUtils.MOVE_RES.YELLOW_COMBINE ||
             ret == BattleUtils.MOVE_RES.BLUE_RED ||
             ret == BattleUtils.MOVE_RES.BLUE_YELLOW) {
+            this._moveRes = ret;
             this._moveDir = dir;
             return ;
         }
@@ -173,19 +175,92 @@ cc.Class({
         this._originPoint = new cc.Vec2(this.node.x, this.node.y);
     },
 
-    getType () {
-        return this._type;
+    //
+    acLevelUP() {
+        this.level += 1;
+        this.lbLevel.string = this.level;
+    },
+
+    //
+    acBeEated() {
+
+    },
+
+    // 
+    acMoveOneGrid(dir) {
+
+    },
+
+    //
+    acMove (dir) {
+
     },
 
     getIndex () {
         return this._index;
     },
 
-    getLevel () {
-        return this._level;
-    },
-
     getCardInfo () {
         return [this._type, this._level]
-    }
+    },
+
+
+    actionMoveOne () {
+        let opt = BattleUtils.getPointByIndex(this._index);
+
+        let toIndex = BattleUtils.getToIndexByDir(this._index, this._moveDir);
+        let toCard = this._battleManager.getCardByIndex(toIndex);
+
+        // let tox = toCard.node.x;
+        // let toy = toCard.node.y;
+
+        if (this._moveRes == BattleUtils.MOVE_RES.BLUE_COMBINE) {
+            // toCard.LEVELUP
+            // this.moveTo and disappoint
+        }
+
+        if (this._moveRes == BattleUtils.MOVE_RES.YELLOW_COMBINE) {
+            // toCard.LEVELUP
+            // this.moveTo and disappoint
+        }
+
+        if (this._moveRes == BattleUtils.MOVE_RES.BLUE_RED) {
+            // toCard.acEated
+            // this.moveTo
+        }
+
+        if (this._moveRes == BattleUtils.MOVE_RES.BLUE_YELLOW) {
+            // toCard.acEated
+            // this.moveTo
+        }
+
+        if (this._moveDir == BattleUtils.CARD_MOVE_DIR.TOP) {
+            for (var i = opt.y; i >= 0; i--) {
+                // obj move up
+            }
+            // generate: opt.x 0
+        }
+        
+        if (this._moveDir == BattleUtils.CARD_MOVE_DIR.BOTTOM) {
+            for (var i = opt.y; i < BattleUtils.Y; ++i) {
+                // obj move bottom
+            }
+
+            // generate: opt.x BattleUtils.Y - 1
+        }
+
+        if (this._moveDir == BattleUtils.CARD_MOVE_DIR.LEFT) {
+            for (var i = opt.x; i < BattleUtils.X; ++i) {
+                // obj move left
+            }
+            // generate: BattleUtils.X-1, opt.y
+        }
+
+        if (this._moveDir == BattleUtils.CARD_MOVE_DIR.RIGHT) {
+            for (var i = opt.x; i >= 0; --i) {
+                // obj move right
+            }
+            // generate: 0, opt.y
+        }
+    },
 });
