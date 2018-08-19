@@ -118,7 +118,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 48.94,
+      "width": 0,
       "height": 20
     },
     "_anchorPoint": {
@@ -164,8 +164,8 @@
     "_srcBlendFactor": 1,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "Label",
-    "_N$string": "Label",
+    "_string": "",
+    "_N$string": "",
     "_fontSize": 20,
     "_lineHeight": 20,
     "_enableWrapText": true,
@@ -176,7 +176,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_id": "71vdp48whBu4emZyD9yQYl"
+    "_id": "bcZxY4vYdBJqYYTO+DSny8"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -217,7 +217,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 48.94,
+      "width": 0,
       "height": 20
     },
     "_anchorPoint": {
@@ -263,8 +263,8 @@
     "_srcBlendFactor": 1,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "Label",
-    "_N$string": "Label",
+    "_string": "",
+    "_N$string": "",
     "_fontSize": 20,
     "_lineHeight": 20,
     "_enableWrapText": true,
@@ -275,7 +275,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_id": "57w75gxgxNfr2zeOUdC6yX"
+    "_id": "8fNwhHUlxK26ec7p7Hm8Oe"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -374,7 +374,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_id": "8fhQnctJNLsZPJTKPxWphT"
+    "_id": "750zJvRRpDtKCVGGSwPdNo"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -473,7 +473,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_id": "7aQQDR7kBBtINwqgnwtFOQ"
+    "_id": "45LxTHdBJBH7vEmfmMuZgp"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -582,7 +582,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "3bdpxox+hJLZ+PR9tLjRhL"
+    "_id": "67ZwVx1e5O3aVZa2f+Kf/M"
   },
   {
     "__type__": "b843aSHl+BJAYuw9YxjmR25",
@@ -611,7 +611,7 @@
       "__uuid__": "d2ab7f2a-5b1b-4c8f-80e4-3078eb61ffb1"
     },
     "_battleManager": null,
-    "_id": "3ftyGDEE5O1YC0/4axvgR4"
+    "_id": "faFlVWJtNEiqzxdR2e4lJl"
   },
   {
     "__type__": "cc.PrefabInfo",

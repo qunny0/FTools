@@ -71,7 +71,7 @@ cc.Class({
 
                 // console.log('', absOfx, absOfY);
 
-                if (absOfx > 10 || absOfY > 10) {
+                if (absOfx > 20 || absOfY > 20) {
                     if (absOfx > absOfY) {
                         if (ofx > 0) {
                             this.setMoveDir(BattleUtils.CARD_MOVE_DIR.RIGHT);
@@ -145,7 +145,6 @@ cc.Class({
     },
 
     setMoveDir (dir) {
-
         var ret = this._battleManager.checkMove(this._index, dir);
 
         if (BattleUtils.checkMoveValid(ret)) {
