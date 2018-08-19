@@ -13,6 +13,8 @@ cc.Class({
 
         _score: 0,
 
+        _redCount: 0,
+
         _stepCount: 0,
 
         _battle: null,
@@ -25,6 +27,8 @@ cc.Class({
         this._arrCardOriginalPoint = [];
 
         this._score = 0;
+
+        this._redCount = 0;
 
         this._stepCount = 0;
 
@@ -42,6 +46,18 @@ cc.Class({
 
     getCardByIndex: function(index) {
         return this._arrCard[index];
+    },
+
+    getScore: function () {
+        return this._score;
+    },
+
+    getRed: function () {
+        return this._redCount;
+    },
+
+    getStep: function () {
+        return this._stepCount;
     },
 
     /**
@@ -146,8 +162,20 @@ cc.Class({
         return this._arrCardOriginalPoint[idx];
     },
 
+    eatCard (ctype, clevel) {
+        console.log('eatCard', ctype, clevel);
+        if (ctype == BattleUtils.CARD_TYPE.YELLOW) {
+            this._score += clevel;
+        }
+        else if (ctype == BattleUtils.CARD_TYPE.RED) {
+            this._redCount += clevel;
+        }
+    },
+
     generateCard (idx, dir) {
+        this._stepCount += 1;
+
         this._battle.generateCard(idx, dir);
-    }
+    },
 
 });

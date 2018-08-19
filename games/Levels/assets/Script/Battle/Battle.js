@@ -21,7 +21,17 @@ cc.Class({
         //     }
         // },
 
+        lbStep: {
+            default: null,
+            type: cc.Label
+        },
+
         lbScore: {
+            default: null,
+            type: cc.Label
+        },
+
+        lbRed: {
             default: null,
             type: cc.Label
         },
@@ -97,12 +107,12 @@ cc.Class({
             [initArr[r], initArr[e]] = [initArr[e], initArr[r]];
         }
 
-        console.log('ainit', initArr);
+        // console.log('ainit', initArr);
 
         for (var i = 0; i < count; i++) {
             var pt = BattleUtils.getPointByIndex(i);
 
-            console.log(i, pt);
+            // console.log(i, pt);
 
             var obj = cc.instantiate(this.cardPb);
 
@@ -118,23 +128,33 @@ cc.Class({
     },
 
     generateCard(idx, dir) {
+        this.refreshScore();
+
         var ct = BattleUtils.getRandomCardType();
 
         var obj = cc.instantiate(this.cardPb);
-
-        obj.getComponent('Card').setData(this._battleManager, idx, ct, 1);
-
-        this.cardPanel.addChild(obj);
 
         let op = this._battleManager.getPointByIndex(idx);
 
         obj.x = op.x;
         obj.y = op.y;
 
-        // this._battleManager.pushcard(idx, obj);
+        console.log('gencard', op.x, op.y);
+
+        obj.getComponent('Card').setData(this._battleManager, idx, ct, 1);
+
+        this.cardPanel.addChild(obj);
 
         this._battleManager.setCard(idx, obj);
     },
+
+    refreshScore() {
+        this.lbScore.string = this._battleManager.getScore();
+
+        this.lbRed.string = this._battleManager.getRed();
+
+        this.lbStep.string = this._battleManager.getStep();
+    }
 
     // update (dt) {},
 });

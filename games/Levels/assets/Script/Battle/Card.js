@@ -53,7 +53,7 @@ cc.Class({
         }
         else if (type == 'touchmove') {
 
-            console.log('this._moveDir', this._moveDir);
+            // console.log('this._moveDir', this._moveDir);
 
             if (this._moveDir == BattleUtils.CARD_MOVE_DIR.INVALID) {
                 return ;
@@ -264,7 +264,12 @@ cc.Class({
         if (this._moveRes == BattleUtils.MOVE_RES.BLUE_RED) {
             // toCard.acEated
             // this.moveTo
+
+            let cardinfo = toCardScript.getCardInfo();
+            this._battleManager.eatCard(cardinfo[0], cardinfo[1]);
+
             toCardScript.acDisappear();
+
             // this.acMoveTo(toIndex, toCardPoint);
             this._battleManager.moveCard(this._index, toIndex);
         }
@@ -272,6 +277,9 @@ cc.Class({
         if (this._moveRes == BattleUtils.MOVE_RES.BLUE_YELLOW) {
             // toCard.acEated
             // this.moveTo
+            let cardinfo = toCardScript.getCardInfo();
+            this._battleManager.eatCard(cardinfo[0], cardinfo[1]);
+
             toCardScript.acDisappear();
             // this.acMoveTo(toIndex, toCardPoint);
             this._battleManager.moveCard(this._index, toIndex);
