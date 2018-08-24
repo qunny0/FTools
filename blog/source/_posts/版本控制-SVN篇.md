@@ -41,5 +41,5 @@ svn简单易上手，如果不需要考虑复杂的版本内容以及分支管�
 - 新平台：如果此时我们新接入一个平台，可以根据要求从release上拉取新的对应的平台分支（PLAT_B）。
 
 ### 版本控制流程
-![svn_flow](https://note.youdao.com/yws/public/resource/67717f4575e08806c2bbab54c0fc85ae/xmlnote/WEBRESOURCEd8c0003aecae932dcdc943fdb6c38325/13717)
+![svn_flow](https://qunny0.github.io/img/article/svn_flow.png)
 
