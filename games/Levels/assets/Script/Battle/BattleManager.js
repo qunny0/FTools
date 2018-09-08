@@ -143,10 +143,6 @@ cc.Class({
     moveCard (oidx, tidx) {
         let obj = this._arrCard[oidx];
 
-        // console.log(this._arrCardOriginalPoint);
-
-        // console.log(tidx, this._arrCardOriginalPoint[tidx]);
-
         obj.getComponent('Card').setPoint(this._arrCardOriginalPoint[tidx]);
 
         obj.getComponent('Card').resetIndex(tidx);

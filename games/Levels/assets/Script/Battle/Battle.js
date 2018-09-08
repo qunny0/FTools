@@ -139,9 +139,28 @@ cc.Class({
         obj.x = op.x;
         obj.y = op.y;
 
-        console.log('gencard', op.x, op.y);
-
         obj.getComponent('Card').setData(this._battleManager, idx, ct, 1);
+
+        let originPt = new cc.v2(op.x, op.y);
+        if (dir == BattleUtils.CARD_MOVE_DIR.TOP) {
+            originPt.y -= 200;
+        }
+        else if (dir == BattleUtils.CARD_MOVE_DIR.BOTTOM) {
+            originPt.y += 200;
+        }
+        else if (dir == BattleUtils.CARD_MOVE_DIR.LEFT) {
+            originPt.x += 150;
+        }
+        else if (dir == BattleUtils.CARD_MOVE_DIR.RIGHT) {
+            originPt.x -= 150;
+        }
+
+        obj.x = originPt.x;
+        obj.y = originPt.y;
+
+        console.log('generate', idx, dir, obj.x, obj.y);
+
+        obj.getComponent('Card').setPoint(op);
 
         this.cardPanel.addChild(obj);
 

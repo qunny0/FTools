@@ -209,11 +209,13 @@ cc.Class({
     },
 
     setPoint (pt) {
+        console.log('setPoint', this._originPoint, pt);
+
         this._originPoint.x = pt.x;
         this._originPoint.y = pt.y;
 
-        this.node.x = pt.x;
-        this.node.y = pt.y;
+        let acMoveTo = new cc.moveTo(0.2, cc.v2(pt.x, pt.y));
+        this.node.runAction(acMoveTo);
     },
 
     acDisappear () {

@@ -11,7 +11,7 @@ var ConfigManager =  cc.Class({
 
     properties: {
 
-        _init: false;
+        _init: false,
 
         Dict: null,
         GameConfig: null,
@@ -43,7 +43,7 @@ var ConfigManager =  cc.Class({
                 self[cfg] = jsonAsset.json;
 
                 if (++loadidx == totalLen) {
-                    _init = true;
+                    self._init = true;
                 }
 
                 cb(loadidx, totalLen);
@@ -54,8 +54,6 @@ var ConfigManager =  cc.Class({
     init () {
         console.log("ConfigManager init");
     }
-
-    // update (dt) {},
 });
 
 
