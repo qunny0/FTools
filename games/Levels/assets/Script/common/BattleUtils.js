@@ -27,6 +27,11 @@ exports.CARD_MOVE_DIR = {
     'INVALID': 5,
 },
 
+exports.CARD_Z_ORDER = {
+    'DEFAULT': 0,
+    'MOVE': 1,
+},
+
 exports.CARD_COLOR = [
     new cc.Color(81, 151, 213, 255),
     new cc.Color(233, 198, 68, 255),

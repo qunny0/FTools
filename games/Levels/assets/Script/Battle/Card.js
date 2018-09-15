@@ -44,16 +44,11 @@ cc.Class({
 
     onTouch(e) {
         let type = e.type;
-        // console.log(type);
-
-        // let conPoint = e.touch.getStartLocation();
 
         if (type == 'touchstart') {
             // this._touchStartPoint = conPoint;
         }
         else if (type == 'touchmove') {
-
-            // console.log('this._moveDir', this._moveDir);
 
             if (this._moveDir == BattleUtils.CARD_MOVE_DIR.INVALID) {
                 return ;
@@ -122,6 +117,7 @@ cc.Class({
 
                 this.node.x = this._originPoint.x + offPoint.x;
                 this.node.y = this._originPoint.y + offPoint.y;
+                this.node.zIndex = BattleUtils.CARD_Z_ORDER.MOVE;
             }
         }
         else if (type == 'touchend' || type == 'touchcancel') {
@@ -134,9 +130,11 @@ cc.Class({
             }
 
             if (!action) {
-                this._moveDir = BattleUtils.CARD_MOVE_DIR.STAND;
+                this.node.zIndex = BattleUtils.CARD_Z_ORDER.DEFAULT;
                 this.node.x = this._originPoint.x;
                 this.node.y = this._originPoint.y;
+
+                this.node.zIndex = BattleUtils.CARD_Z_ORDER.STAND;
             }
         }
         else {
@@ -171,6 +169,8 @@ cc.Class({
         this.lbIndex.string = idx;
 
         this._originPoint = new cc.Vec2(this.node.x, this.node.y);
+
+        this.node.zIndex = BattleUtils.CARD_Z_ORDER.DEFAULT;
     },
 
     //

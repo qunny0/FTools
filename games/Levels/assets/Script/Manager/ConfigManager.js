@@ -31,8 +31,6 @@ var ConfigManager =  cc.Class({
     loadConfig (cb) {
         let self = this;
 
-        console.log('this', this);
-
         let totalLen = CONFIG_LIST.length;
 
         let loadidx = 0;

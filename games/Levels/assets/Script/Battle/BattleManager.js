@@ -3,8 +3,6 @@ var BattleUtils = require('../common/BattleUtils');
 cc.Class({
 
     properties: {
-        // state: "sprite",
-
         // _arrCardData: null,
 
         _arrCard: null,
@@ -40,7 +38,7 @@ cc.Class({
 
         this._arrCardOriginalPoint[index] = new cc.Vec2(obj.x, obj.y);
 
-        console.log('in', index, this._arrCardOriginalPoint[index]);
+        // console.log('in', index, this._arrCardOriginalPoint[index]);
 
     },
 
@@ -106,10 +104,6 @@ cc.Class({
         let ttype = toCardInfo[0];
         let tlevel = toCardInfo[1];
 
-        // console.log(idx, toIndex, ctype, clevel, ttype, tlevel);
-
-        // console.log(ctype == BattleUtils.CARD_TYPE.YELLOW, clevel == tlevel, ttype == BattleUtils.CARD_TYPE.YELLOW);
-        
         if (ctype == BattleUtils.CARD_TYPE.YELLOW) {
             if (clevel == tlevel && ttype == BattleUtils.CARD_TYPE.YELLOW) {
                 return BattleUtils.MOVE_RES.YELLOW_COMBINE;

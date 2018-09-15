@@ -6,7 +6,10 @@ cc.Class({
             default: null,
             type: cc.Prefab
         }
-        
+    },
+
+    ctor () {
+
     },
 
     // use this for initialization

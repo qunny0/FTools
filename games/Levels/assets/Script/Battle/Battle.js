@@ -54,16 +54,11 @@ cc.Class({
         _battleManager: null,
     },
 
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {},
-
     start () {
         this.lbScore.string = '';
         this.lbBest.string = '';
         
         this._battleManager = new BattleManager(this);
-        console.log('battleManager', this._battleManager.state);
 
         this.initGame();
     },
@@ -73,13 +68,11 @@ cc.Class({
 
         var initArr = [];
 
-        // 10 9 6(4+2)
         var yellowCount = 0;
         var blueCount = 0;
         var redCount = 0;
 
         for (var i = 0; i < count; i++) {
-            // let t = Math.floor(Math.random() * 3);
             if (yellowCount < 10) {
                 yellowCount += 1;
                 initArr.push([BattleUtils.CARD_TYPE.YELLOW, 1]);
@@ -107,12 +100,8 @@ cc.Class({
             [initArr[r], initArr[e]] = [initArr[e], initArr[r]];
         }
 
-        // console.log('ainit', initArr);
-
         for (var i = 0; i < count; i++) {
             var pt = BattleUtils.getPointByIndex(i);
-
-            // console.log(i, pt);
 
             var obj = cc.instantiate(this.cardPb);
 
@@ -143,22 +132,22 @@ cc.Class({
 
         let originPt = new cc.v2(op.x, op.y);
         if (dir == BattleUtils.CARD_MOVE_DIR.TOP) {
-            originPt.y -= 200;
+            originPt.y -= 230;
         }
         else if (dir == BattleUtils.CARD_MOVE_DIR.BOTTOM) {
-            originPt.y += 200;
+            originPt.y += 230;
         }
         else if (dir == BattleUtils.CARD_MOVE_DIR.LEFT) {
-            originPt.x += 150;
+            originPt.x += 180;
         }
         else if (dir == BattleUtils.CARD_MOVE_DIR.RIGHT) {
-            originPt.x -= 150;
+            originPt.x -= 180;
         }
 
         obj.x = originPt.x;
         obj.y = originPt.y;
 
-        console.log('generate', idx, dir, obj.x, obj.y);
+        // console.log('generate', idx, dir, obj.x, obj.y);
 
         obj.getComponent('Card').setPoint(op);
 
