@@ -39,7 +39,6 @@ cc.Class({
         this._arrCardOriginalPoint[index] = new cc.Vec2(obj.x, obj.y);
 
         // console.log('in', index, this._arrCardOriginalPoint[index]);
-
     },
 
     getCardByIndex: function(index) {
