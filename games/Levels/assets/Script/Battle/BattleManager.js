@@ -206,4 +206,40 @@ cc.Class({
         this._battle.generateCard(idx, dir);
     },
 
+    /**
+     * 游戏是否结束
+     */
+    checkGameOver () {
+        if (checkGameOver_CantMove()) {
+            return true;
+        }
+
+        return false;
+    },
+
+    /**
+     * 游戏是否结束。无法移动
+     */
+    checkGameOver_CantMove() {
+        let len = this._arrCard.length;
+
+        for (let i = 0; i < len; ++i) {
+            let idx = this._arrCard[i].getComponent('Card').getIndex();
+
+            let res = this.checkMove(idx, BattleUtils.CARD_MOVE_DIR.TOP);
+
+            if (BattleUtils.checkMoveValid(res)) {
+                return false;
+            }
+
+            res = this.checkMove(idx, BattleUtils.CARD_MOVE_DIR.RIGHT);
+
+            if (BattleUtils.checkMove(res)) {
+                return false;
+            }
+        }
+
+        return true;
+    },
+
 });

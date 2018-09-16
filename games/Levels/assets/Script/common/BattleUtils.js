@@ -72,10 +72,10 @@ exports.getToIndexByDir = function (oidx, dir) {
 };
 
 exports.checkMoveValid = function (ret) {
-    if (ret == this.CARD_MOVE_DIR.TOP ||
-        ret == this.CARD_MOVE_DIR.BOTTOM ||
-        ret == this.CARD_MOVE_DIR.LEFT ||
-        ret == this.CARD_MOVE_DIR.RIGHT) {
+    if (ret == this.MOVE_RES.YELLOW_COMBINE ||
+        ret == this.MOVE_RES.BLUE_COMBINE ||
+        ret == this.MOVE_RES.BLUE_YELLOW ||
+        ret == this.MOVE_RES.BLUE_RED) {
             return true;
         }
 

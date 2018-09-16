@@ -159,8 +159,6 @@ cc.Class({
     setMoveDir (dir) {
         var ret = this._battleManager.checkMove(this._index, dir);
 
-        console.log('moveDir ret === ', ret);
-
         if (BattleUtils.checkMoveValid(ret)) {
             this._moveRes = ret;
             this._moveDir = dir;
