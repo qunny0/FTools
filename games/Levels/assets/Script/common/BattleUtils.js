@@ -81,17 +81,3 @@ exports.checkMoveValid = function (ret) {
 
     return false;
 };
-
-exports.getRandomCardType = function () {
-    let ran = Math.floor(Math.random() * 101);
-
-    if (ran <= 40) {
-        return this.CARD_TYPE.YELLOW;
-    }
-
-    if (ran <= 76) {
-        return this.CARD_TYPE.BLUE;
-    }
-
-    return this.CARD_TYPE.RED;
-}

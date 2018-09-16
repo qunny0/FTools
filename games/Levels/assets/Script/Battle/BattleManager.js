@@ -20,6 +20,8 @@ cc.Class({
         _battle: null,
 
         _battleConfig: null,
+
+        _redCardMaxLevel: 2,
     },
 
     ctor: function (pbattle) {
@@ -35,6 +37,8 @@ cc.Class({
         this._stepCount = 0;
 
         this._battle = pbattle;
+
+        this._redCardMaxLevel = 2,
 
         this._battleConfig = new BattleData(1);
     },
@@ -169,6 +173,31 @@ cc.Class({
         else if (ctype == BattleUtils.CARD_TYPE.RED) {
             this._redCount += clevel;
         }
+    },
+
+    getRandomCardType: function () {
+        let ran = Math.floor(Math.random() * 101);
+
+        if (ran <= 40) {
+            return [BattleUtils.CARD_TYPE.YELLOW, 1];
+        }
+
+        if (ran <= 76) {
+            return [BattleUtils.CARD_TYPE.BLUE, 1];
+        }
+
+        if (this._redCardMaxLevel < 10) {
+            if (this._stepCount > this._battleConfig._redCardLevelsByStep[this._redCardMaxLevel]) {
+                this._redCardMaxLevel += 1;
+            }
+        }
+
+        let redLevel = this._redCardMaxLevel;
+        if (ran > 95) {
+            redLevel = this._redCardMaxLevel - 1;
+        }
+
+        return [BattleUtils.CARD_TYPE.RED, redLevel];
     },
 
     generateCard (idx, dir) {

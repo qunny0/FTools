@@ -62,6 +62,7 @@ cc.Class({
             [this._initCard[r], this._initCard[e]] = [this._initCard[e], this._initCard[r]];
         }
 
+        this._redCardLevelsByStep = challengeCfg.redCardLevels.split(';');
     },
 
     getInitCard: function() {

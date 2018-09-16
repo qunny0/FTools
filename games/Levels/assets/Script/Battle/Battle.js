@@ -121,7 +121,7 @@ cc.Class({
     generateCard(idx, dir) {
         this.refreshScore();
 
-        var ct = BattleUtils.getRandomCardType();
+        var genCard = this._battleManager.getRandomCardType();
 
         var obj = cc.instantiate(this.cardPb);
 
@@ -130,7 +130,7 @@ cc.Class({
         obj.x = op.x;
         obj.y = op.y;
 
-        obj.getComponent('Card').setData(this._battleManager, idx, ct, 1);
+        obj.getComponent('Card').setData(this._battleManager, idx, genCard[0], genCard[1]);
 
         let originPt = new cc.v2(op.x, op.y);
         if (dir == BattleUtils.CARD_MOVE_DIR.TOP) {
