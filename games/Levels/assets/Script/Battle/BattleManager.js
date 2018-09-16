@@ -1,5 +1,7 @@
 var BattleUtils = require('../common/BattleUtils');
 
+var BattleData = require('./BattleData');
+
 cc.Class({
 
     properties: {
@@ -16,6 +18,8 @@ cc.Class({
         _stepCount: 0,
 
         _battle: null,
+
+        _battleConfig: null,
     },
 
     ctor: function (pbattle) {
@@ -31,6 +35,12 @@ cc.Class({
         this._stepCount = 0;
 
         this._battle = pbattle;
+
+        this._battleConfig = new BattleData(1);
+    },
+
+    getConfig: function() {
+        return this._battleConfig;
     },
 
     pushcard: function(index, obj) {

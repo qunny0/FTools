@@ -1,1 +1,13 @@
-{"1":{"initBlueCard":"9|1","initYellowCard":"10|1","initRedCard":"4|1;2|2","redCardLevels":"1;1;16;40;60;110;180;280;480;840;","whetherGenRedCard":true,"whetherGenYellowCard":true,"blueCardConfigID":1,"yellowCardConfigID":1,"redCardConfigID":1}}
+{
+    "1": {
+        "initBlueCard": "9|1",
+        "initYellowCard": "10|1",
+        "initRedCard": "4|1;2|2",
+        "redCardLevels": "1;1;16;40;60;110;180;280;480;840;",
+        "whetherGenRedCard": true,
+        "whetherGenYellowCard": true,
+        "blueCardConfigID": 1,
+        "yellowCardConfigID": 1,
+        "redCardConfigID": 1
+    }
+}

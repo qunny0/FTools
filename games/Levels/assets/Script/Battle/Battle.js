@@ -64,43 +64,45 @@ cc.Class({
     },
 
     initGame () {
-        let count = BattleUtils.X * BattleUtils.Y
+        // let count = BattleUtils.X * BattleUtils.Y
 
-        var initArr = [];
+        // var initArr = [];
 
-        var yellowCount = 0;
-        var blueCount = 0;
-        var redCount = 0;
+        // var yellowCount = 0;
+        // var blueCount = 0;
+        // var redCount = 0;
 
-        for (var i = 0; i < count; i++) {
-            if (yellowCount < 10) {
-                yellowCount += 1;
-                initArr.push([BattleUtils.CARD_TYPE.YELLOW, 1]);
-            }
-            else if (blueCount < 9) {
-                blueCount += 1;
-                initArr.push([BattleUtils.CARD_TYPE.BLUE, 1]);
-            }
-            else {
-                redCount += 1;
-                if (redCount <= 4) {
-                    initArr.push([BattleUtils.CARD_TYPE.RED, 1]);
-                }
-                else {
-                    initArr.push([BattleUtils.CARD_TYPE.RED, 2]);
-                }
-            }
-        }
+        // for (var i = 0; i < count; i++) {
+        //     if (yellowCount < 10) {
+        //         yellowCount += 1;
+        //         initArr.push([BattleUtils.CARD_TYPE.YELLOW, 1]);
+        //     }
+        //     else if (blueCount < 9) {
+        //         blueCount += 1;
+        //         initArr.push([BattleUtils.CARD_TYPE.BLUE, 1]);
+        //     }
+        //     else {
+        //         redCount += 1;
+        //         if (redCount <= 4) {
+        //             initArr.push([BattleUtils.CARD_TYPE.RED, 1]);
+        //         }
+        //         else {
+        //             initArr.push([BattleUtils.CARD_TYPE.RED, 2]);
+        //         }
+        //     }
+        // }
 
-        let rhalf = Math.floor(count/2);
-        for (var i = 0; i < rhalf; i++) {
-            let r = Math.floor(Math.random() * rhalf);
-            let e = r + rhalf;
+        // let rhalf = Math.floor(count/2);
+        // for (var i = 0; i < rhalf; i++) {
+        //     let r = Math.floor(Math.random() * rhalf);
+        //     let e = r + rhalf;
 
-            [initArr[r], initArr[e]] = [initArr[e], initArr[r]];
-        }
+        //     [initArr[r], initArr[e]] = [initArr[e], initArr[r]];
+        // }
 
-        for (var i = 0; i < count; i++) {
+        var initArr = this._battleManager.getConfig().getInitCard();
+
+        for (var i = 0; i < initArr.length; i++) {
             var pt = BattleUtils.getPointByIndex(i);
 
             var obj = cc.instantiate(this.cardPb);

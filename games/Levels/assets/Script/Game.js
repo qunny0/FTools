@@ -1,3 +1,5 @@
+var ConfigManager = require('./Manager/ConfigManager');
+
 cc.Class({
     extends: cc.Component,
 
@@ -5,7 +7,9 @@ cc.Class({
         battlePb: {
             default: null,
             type: cc.Prefab
-        }
+        },
+
+        _startBattle: false,
     },
 
     ctor () {
@@ -14,15 +18,23 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+
     },
 
     start: function () {
-        let inst = cc.instantiate(this.battlePb);
-        this.node.addChild(inst);
+
     },
 
     // called every frame
     update: function (dt) {
-
+        if (!this._startBattle && ConfigManager.getInstance()._init) {
+            this._startBattle = true;
+            this.startBattle();
+        }
     },
+
+    startBattle: function() {
+        let inst = cc.instantiate(this.battlePb);
+        this.node.addChild(inst);
+    }
 });
