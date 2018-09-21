@@ -12,7 +12,7 @@ cc.Class({
     initGlobal() {
         G.configManager = ConfigManager.getInstance();
         G.configManager.loadConfig((loadidx, totallen) => {
-            console.log('--', loadidx, totallen);
+            // console.log('--', loadidx, totallen);
         })
     }
 });

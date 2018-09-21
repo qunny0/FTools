@@ -54,65 +54,56 @@ cc.Class({
         _battleManager: null,
     },
 
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {},
-
     start () {
         this.lbScore.string = '';
         this.lbBest.string = '';
         
         this._battleManager = new BattleManager(this);
-        console.log('battleManager', this._battleManager.state);
 
         this.initGame();
     },
 
     initGame () {
-        let count = BattleUtils.X * BattleUtils.Y
+        // let count = BattleUtils.X * BattleUtils.Y
 
-        var initArr = [];
+        // var initArr = [];
 
-        // 10 9 6(4+2)
-        var yellowCount = 0;
-        var blueCount = 0;
-        var redCount = 0;
+        // var yellowCount = 0;
+        // var blueCount = 0;
+        // var redCount = 0;
 
-        for (var i = 0; i < count; i++) {
-            // let t = Math.floor(Math.random() * 3);
-            if (yellowCount < 10) {
-                yellowCount += 1;
-                initArr.push([BattleUtils.CARD_TYPE.YELLOW, 1]);
-            }
-            else if (blueCount < 9) {
-                blueCount += 1;
-                initArr.push([BattleUtils.CARD_TYPE.BLUE, 1]);
-            }
-            else {
-                redCount += 1;
-                if (redCount <= 4) {
-                    initArr.push([BattleUtils.CARD_TYPE.RED, 1]);
-                }
-                else {
-                    initArr.push([BattleUtils.CARD_TYPE.RED, 2]);
-                }
-            }
-        }
+        // for (var i = 0; i < count; i++) {
+        //     if (yellowCount < 10) {
+        //         yellowCount += 1;
+        //         initArr.push([BattleUtils.CARD_TYPE.YELLOW, 1]);
+        //     }
+        //     else if (blueCount < 9) {
+        //         blueCount += 1;
+        //         initArr.push([BattleUtils.CARD_TYPE.BLUE, 1]);
+        //     }
+        //     else {
+        //         redCount += 1;
+        //         if (redCount <= 4) {
+        //             initArr.push([BattleUtils.CARD_TYPE.RED, 1]);
+        //         }
+        //         else {
+        //             initArr.push([BattleUtils.CARD_TYPE.RED, 2]);
+        //         }
+        //     }
+        // }
 
-        let rhalf = Math.floor(count/2);
-        for (var i = 0; i < rhalf; i++) {
-            let r = Math.floor(Math.random() * rhalf);
-            let e = r + rhalf;
+        // let rhalf = Math.floor(count/2);
+        // for (var i = 0; i < rhalf; i++) {
+        //     let r = Math.floor(Math.random() * rhalf);
+        //     let e = r + rhalf;
 
-            [initArr[r], initArr[e]] = [initArr[e], initArr[r]];
-        }
+        //     [initArr[r], initArr[e]] = [initArr[e], initArr[r]];
+        // }
 
-        // console.log('ainit', initArr);
+        var initArr = this._battleManager.getConfig().getInitCard();
 
-        for (var i = 0; i < count; i++) {
+        for (var i = 0; i < initArr.length; i++) {
             var pt = BattleUtils.getPointByIndex(i);
-
-            // console.log(i, pt);
 
             var obj = cc.instantiate(this.cardPb);
 
@@ -130,7 +121,7 @@ cc.Class({
     generateCard(idx, dir) {
         this.refreshScore();
 
-        var ct = BattleUtils.getRandomCardType();
+        var genCard = this._battleManager.getRandomCardType();
 
         var obj = cc.instantiate(this.cardPb);
 
@@ -139,9 +130,28 @@ cc.Class({
         obj.x = op.x;
         obj.y = op.y;
 
-        console.log('gencard', op.x, op.y);
+        obj.getComponent('Card').setData(this._battleManager, idx, genCard[0], genCard[1]);
 
-        obj.getComponent('Card').setData(this._battleManager, idx, ct, 1);
+        let originPt = new cc.v2(op.x, op.y);
+        if (dir == BattleUtils.CARD_MOVE_DIR.TOP) {
+            originPt.y -= 230;
+        }
+        else if (dir == BattleUtils.CARD_MOVE_DIR.BOTTOM) {
+            originPt.y += 230;
+        }
+        else if (dir == BattleUtils.CARD_MOVE_DIR.LEFT) {
+            originPt.x += 180;
+        }
+        else if (dir == BattleUtils.CARD_MOVE_DIR.RIGHT) {
+            originPt.x -= 180;
+        }
+
+        obj.x = originPt.x;
+        obj.y = originPt.y;
+
+        // console.log('generate', idx, dir, obj.x, obj.y);
+
+        obj.getComponent('Card').setPoint(op);
 
         this.cardPanel.addChild(obj);
 

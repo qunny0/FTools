@@ -1,10 +1,10 @@
 var BattleUtils = require('../common/BattleUtils');
 
+var BattleData = require('./BattleData');
+
 cc.Class({
 
     properties: {
-        // state: "sprite",
-
         // _arrCardData: null,
 
         _arrCard: null,
@@ -18,6 +18,10 @@ cc.Class({
         _stepCount: 0,
 
         _battle: null,
+
+        _battleConfig: null,
+
+        _redCardMaxLevel: 2,
     },
 
     ctor: function (pbattle) {
@@ -33,6 +37,14 @@ cc.Class({
         this._stepCount = 0;
 
         this._battle = pbattle;
+
+        this._redCardMaxLevel = 2,
+
+        this._battleConfig = new BattleData(1);
+    },
+
+    getConfig: function() {
+        return this._battleConfig;
     },
 
     pushcard: function(index, obj) {
@@ -40,8 +52,7 @@ cc.Class({
 
         this._arrCardOriginalPoint[index] = new cc.Vec2(obj.x, obj.y);
 
-        console.log('in', index, this._arrCardOriginalPoint[index]);
-
+        // console.log('in', index, this._arrCardOriginalPoint[index]);
     },
 
     getCardByIndex: function(index) {
@@ -106,10 +117,6 @@ cc.Class({
         let ttype = toCardInfo[0];
         let tlevel = toCardInfo[1];
 
-        // console.log(idx, toIndex, ctype, clevel, ttype, tlevel);
-
-        // console.log(ctype == BattleUtils.CARD_TYPE.YELLOW, clevel == tlevel, ttype == BattleUtils.CARD_TYPE.YELLOW);
-        
         if (ctype == BattleUtils.CARD_TYPE.YELLOW) {
             if (clevel == tlevel && ttype == BattleUtils.CARD_TYPE.YELLOW) {
                 return BattleUtils.MOVE_RES.YELLOW_COMBINE;
@@ -143,10 +150,6 @@ cc.Class({
     moveCard (oidx, tidx) {
         let obj = this._arrCard[oidx];
 
-        // console.log(this._arrCardOriginalPoint);
-
-        // console.log(tidx, this._arrCardOriginalPoint[tidx]);
-
         obj.getComponent('Card').setPoint(this._arrCardOriginalPoint[tidx]);
 
         obj.getComponent('Card').resetIndex(tidx);
@@ -172,10 +175,71 @@ cc.Class({
         }
     },
 
+    getRandomCardType: function () {
+        let ran = Math.floor(Math.random() * 101);
+
+        if (ran <= 40) {
+            return [BattleUtils.CARD_TYPE.YELLOW, 1];
+        }
+
+        if (ran <= 76) {
+            return [BattleUtils.CARD_TYPE.BLUE, 1];
+        }
+
+        if (this._redCardMaxLevel < 10) {
+            if (this._stepCount > this._battleConfig._redCardLevelsByStep[this._redCardMaxLevel]) {
+                this._redCardMaxLevel += 1;
+            }
+        }
+
+        let redLevel = this._redCardMaxLevel;
+        if (ran > 95) {
+            redLevel = this._redCardMaxLevel - 1;
+        }
+
+        return [BattleUtils.CARD_TYPE.RED, redLevel];
+    },
+
     generateCard (idx, dir) {
         this._stepCount += 1;
 
         this._battle.generateCard(idx, dir);
+    },
+
+    /**
+     * 游戏是否结束
+     */
+    checkGameOver () {
+        if (checkGameOver_CantMove()) {
+            return true;
+        }
+
+        return false;
+    },
+
+    /**
+     * 游戏是否结束。无法移动
+     */
+    checkGameOver_CantMove() {
+        let len = this._arrCard.length;
+
+        for (let i = 0; i < len; ++i) {
+            let idx = this._arrCard[i].getComponent('Card').getIndex();
+
+            let res = this.checkMove(idx, BattleUtils.CARD_MOVE_DIR.TOP);
+
+            if (BattleUtils.checkMoveValid(res)) {
+                return false;
+            }
+
+            res = this.checkMove(idx, BattleUtils.CARD_MOVE_DIR.RIGHT);
+
+            if (BattleUtils.checkMove(res)) {
+                return false;
+            }
+        }
+
+        return true;
     },
 
 });

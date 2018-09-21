@@ -1,7 +1,9 @@
 const CONFIG_LIST = [
     'Dict',
     'GameConfig',
-    'Trigger'
+    'Trigger',
+    'HeroDisplay',
+    'Challenge',
 ]
 
 var ConfigManager =  cc.Class({
@@ -11,11 +13,13 @@ var ConfigManager =  cc.Class({
 
     properties: {
 
-        _init: false;
+        _init: false,
 
         Dict: null,
         GameConfig: null,
         Trigger: null,
+        HeroDisplay: null,
+        Challenge: null,
 
         configList:{
             type: Array,
@@ -31,8 +35,6 @@ var ConfigManager =  cc.Class({
     loadConfig (cb) {
         let self = this;
 
-        console.log('this', this);
-
         let totalLen = CONFIG_LIST.length;
 
         let loadidx = 0;
@@ -40,13 +42,20 @@ var ConfigManager =  cc.Class({
             let cfgpath = 'config/' + cfg;
 
             cc.loader.loadRes(cfgpath, function (err, jsonAsset) {
-                self[cfg] = jsonAsset.json;
+                if (!err) {
+                    self[jsonAsset._name] = jsonAsset.json;
 
-                if (++loadidx == totalLen) {
-                    _init = true;
+                    if (++loadidx == totalLen) {
+                        self._init = true;
+                    }
+
+                    console.log('load config ' + jsonAsset._name + ' success!');
+
+                    cb(loadidx, totalLen);
                 }
-
-                cb(loadidx, totalLen);
+                else {
+                    console.log('load config ' + jsonAsset._name + ' failed!');
+                }
             });
         });
     },
@@ -54,8 +63,6 @@ var ConfigManager =  cc.Class({
     init () {
         console.log("ConfigManager init");
     }
-
-    // update (dt) {},
 });
 
 

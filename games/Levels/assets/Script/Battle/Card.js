@@ -37,25 +37,20 @@ cc.Class({
         this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onTouch, this);
         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouch, this);
         this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onTouch, this);
-
-        this._moveDir = BattleUtils.CARD_MOVE_DIR.STAND;
-        this._moveRes = BattleUtils.MOVE_RES.INVALID;
     },
 
     onTouch(e) {
         let type = e.type;
-        // console.log(type);
-
-        // let conPoint = e.touch.getStartLocation();
 
         if (type == 'touchstart') {
             // this._touchStartPoint = conPoint;
         }
         else if (type == 'touchmove') {
 
-            // console.log('this._moveDir', this._moveDir);
+            console.log('===touchMove', this._moveDir);
 
             if (this._moveDir == BattleUtils.CARD_MOVE_DIR.INVALID) {
+                console.log('===', this._index, BattleUtils.CARD_MOVE_DIR.INVALID);
                 return ;
             }
 
@@ -69,7 +64,9 @@ cc.Class({
                 let absOfx = Math.abs(ofx);
                 let absOfY = Math.abs(ofy);
 
-                // console.log('', absOfx, absOfY);
+                let opt = BattleUtils.getPointByIndex(this._index);
+
+                console.log('opt', opt.x, opt.y);
 
                 if (absOfx > 20 || absOfY > 20) {
                     if (absOfx > absOfY) {
@@ -122,21 +119,36 @@ cc.Class({
 
                 this.node.x = this._originPoint.x + offPoint.x;
                 this.node.y = this._originPoint.y + offPoint.y;
+                this.node.zIndex = BattleUtils.CARD_Z_ORDER.MOVE;
             }
         }
         else if (type == 'touchend' || type == 'touchcancel') {
             let action = false;
-            if (type == 'touchend') {
-                if (BattleUtils.checkMoveValid(this._moveDir)) {
-                    this.actionMoveOne();
-                    action = true;
+
+            let startPoint = e.touch.getStartLocation();
+            let conPoint = e.touch.getLocation();
+
+            let ofx = conPoint.x - startPoint.x;
+            let ofy = conPoint.y - startPoint.y;
+
+            let absOfx = Math.abs(ofx);
+            let absOfY = Math.abs(ofy);
+
+            if (absOfx > 20 || absOfY > 20) {
+                if (type == 'touchend') {
+                    if (BattleUtils.checkMoveValid(this._moveDir)) {
+                        this.actionMoveOne();
+                        action = true;
+                    }
                 }
             }
 
             if (!action) {
-                this._moveDir = BattleUtils.CARD_MOVE_DIR.STAND;
+                this.node.zIndex = BattleUtils.CARD_Z_ORDER.DEFAULT;
                 this.node.x = this._originPoint.x;
                 this.node.y = this._originPoint.y;
+
+                this.node.zIndex = BattleUtils.CARD_Z_ORDER.STAND;
             }
         }
         else {
@@ -171,6 +183,8 @@ cc.Class({
         this.lbIndex.string = idx;
 
         this._originPoint = new cc.Vec2(this.node.x, this.node.y);
+
+        this._moveRes = BattleUtils.MOVE_RES.INVALID;
     },
 
     //
@@ -182,8 +196,16 @@ cc.Class({
     },
 
     resetIndex (idx) {
+        console.log('resetIndex', this._index + '->' + idx);
+
         this._index = idx;
         this.lbIndex.string = this._index;
+
+        this.node.zIndex = BattleUtils.CARD_Z_ORDER.DEFAULT;
+
+        this._moveDir = BattleUtils.CARD_MOVE_DIR.STAND;
+
+        this._moveRes = BattleUtils.MOVE_RES.INVALID;
     },
 
     //
@@ -209,11 +231,13 @@ cc.Class({
     },
 
     setPoint (pt) {
+        console.log('setPoint', this._originPoint, pt);
+
         this._originPoint.x = pt.x;
         this._originPoint.y = pt.y;
 
-        this.node.x = pt.x;
-        this.node.y = pt.y;
+        let acMoveTo = new cc.moveTo(0.2, cc.v2(pt.x, pt.y));
+        this.node.runAction(acMoveTo);
     },
 
     acDisappear () {
@@ -239,11 +263,10 @@ cc.Class({
         let toIndex = BattleUtils.getToIndexByDir(this._index, this._moveDir);
         let toCard = this._battleManager.getCardByIndex(toIndex);
 
-        // let tox = toCard.node.x;
-        // let toy = toCard.node.y;
-
         let toCardScript = toCard.getComponent('Card');
         let toCardPoint = toCardScript.getOriginalPoint();
+
+        let moveDir = this._moveDir;
 
         if (this._moveRes == BattleUtils.MOVE_RES.BLUE_COMBINE) {
             // toCard.LEVELUP
@@ -287,7 +310,7 @@ cc.Class({
         let topoint = opt;
         let generateIndex = 0;
         let generateDir = 0;
-        if (this._moveDir == BattleUtils.CARD_MOVE_DIR.TOP) {
+        if (moveDir == BattleUtils.CARD_MOVE_DIR.TOP) {
             for (var i = topoint.y - 1; i >= 0; i--) {
                 // obj move up
                 topoint.y = i;
@@ -305,7 +328,7 @@ cc.Class({
             generateIndex = BattleUtils.getIndexByPoint(topoint);
         }
         
-        if (this._moveDir == BattleUtils.CARD_MOVE_DIR.BOTTOM) {
+        if (moveDir == BattleUtils.CARD_MOVE_DIR.BOTTOM) {
             for (var i = topoint.y + 1; i < BattleUtils.Y; ++i) {
                 topoint.y = i;
                 let readyIndex = BattleUtils.getIndexByPoint(topoint);
@@ -323,7 +346,7 @@ cc.Class({
 
         }
 
-        if (this._moveDir == BattleUtils.CARD_MOVE_DIR.LEFT) {
+        if (moveDir == BattleUtils.CARD_MOVE_DIR.LEFT) {
             for (var i = topoint.x + 1; i < BattleUtils.X; ++i) {
                 // obj move left
                 topoint.x = i;
@@ -341,7 +364,7 @@ cc.Class({
             generateIndex = BattleUtils.getIndexByPoint(topoint);
         }
 
-        if (this._moveDir == BattleUtils.CARD_MOVE_DIR.RIGHT) {
+        if (moveDir == BattleUtils.CARD_MOVE_DIR.RIGHT) {
             for (var i = topoint.x - 1; i >= 0; --i) {
                 // obj move right
                 topoint.x = i;

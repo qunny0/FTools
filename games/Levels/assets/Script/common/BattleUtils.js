@@ -27,6 +27,11 @@ exports.CARD_MOVE_DIR = {
     'INVALID': 5,
 },
 
+exports.CARD_Z_ORDER = {
+    'DEFAULT': 0,
+    'MOVE': 1,
+},
+
 exports.CARD_COLOR = [
     new cc.Color(81, 151, 213, 255),
     new cc.Color(233, 198, 68, 255),
@@ -67,26 +72,12 @@ exports.getToIndexByDir = function (oidx, dir) {
 };
 
 exports.checkMoveValid = function (ret) {
-    if (ret == this.CARD_MOVE_DIR.TOP ||
-        ret == this.CARD_MOVE_DIR.BOTTOM ||
-        ret == this.CARD_MOVE_DIR.LEFT ||
-        ret == this.CARD_MOVE_DIR.RIGHT) {
+    if (ret == this.MOVE_RES.YELLOW_COMBINE ||
+        ret == this.MOVE_RES.BLUE_COMBINE ||
+        ret == this.MOVE_RES.BLUE_YELLOW ||
+        ret == this.MOVE_RES.BLUE_RED) {
             return true;
         }
 
     return false;
 };
-
-exports.getRandomCardType = function () {
-    let ran = Math.floor(Math.random() * 101);
-
-    if (ran <= 40) {
-        return this.CARD_TYPE.YELLOW;
-    }
-
-    if (ran <= 76) {
-        return this.CARD_TYPE.BLUE;
-    }
-
-    return this.CARD_TYPE.RED;
-}
