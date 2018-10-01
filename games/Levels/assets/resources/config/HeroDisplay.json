@@ -1,1 +1,13 @@
-{"1":{"level4":"a_liubei;","level5":"a_zhangfei;","level6":"a_guanyu2;","level7":"a_guanyu;"},"2":{"level5":"d_wujiang2;","level6":"d_wujiuang3;","level7":"d_wujiang4;"}}
+{
+    "1": {
+        "level4": "a_liubei;",
+        "level5": "a_zhangfei;",
+        "level6": "a_guanyu2;",
+        "level7": "a_guanyu;"
+    },
+    "2": {
+        "level5": "d_wujiang2;",
+        "level6": "d_wujiuang3;",
+        "level7": "d_wujiang4;"
+    }
+}
