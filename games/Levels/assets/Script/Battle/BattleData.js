@@ -31,7 +31,7 @@ cc.Class({
     },
 
     ctor: function(challengeID) {
-        console.log('BattleData.init', challengeID);
+        console.log('BattleData.challengeID: ', challengeID);
         let self = this;
 
         let challengeCfg = ConfigManager.getInstance().Challenge[String(challengeID)];
@@ -63,6 +63,11 @@ cc.Class({
         }
 
         this._redCardLevelsByStep = challengeCfg.redCardLevels.split(';');
+
+        this._blueCardShowCfg = ConfigManager.getInstance().HeroDisplay[String(challengeCfg.blueCardConfigID)];
+        this._yellowCardShowCfg = ConfigManager.getInstance().HeroDisplay[String(challengeCfg.yellowCardConfigID)];
+        this._redCardShowCfg = ConfigManager.getInstance().HeroDisplay[String(challengeCfg.redCardConfigID)];
+
     },
 
     getInitCard: function() {

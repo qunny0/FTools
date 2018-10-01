@@ -59,6 +59,31 @@ cc.Class({
         return this._arrCard[index];
     },
 
+    getCardImage: function(cardType, level) {
+        let imgs = null;
+        if (cardType == BattleUtils.CARD_TYPE.RED) {
+            imgs = this._battleConfig._redCardShowCfg['level' + level];
+        }
+        else if (cardType == BattleUtils.CARD_TYPE.YELLOW) {
+            imgs = this._battleConfig._yellowCardShowCfg['level' + level];
+        }
+        else if (cardType == BattleUtils.CARD_TYPE.BLUE) {
+            imgs = this._battleConfig._blueCardShowCfg['level' + level];
+        }
+
+        if (!imgs || imgs.length == 0) {
+            return null;
+        }
+
+        let img = imgs[0];
+        if (imgs.length > 1) {
+            let ran = Math.floor(Math.random() * imgs.length);
+            img = imgs[ran];
+        }
+
+        return "res/CardImg/" + img;
+    },
+
     getScore: function () {
         return this._score;
     },

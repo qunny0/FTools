@@ -15,6 +15,11 @@ cc.Class({
             type: cc.Label,
         },
 
+        spHero: {
+            default: null,
+            type: cc.Sprite,
+        },
+
         _index: 0,
 
         _type: 0,
@@ -185,6 +190,17 @@ cc.Class({
         this._originPoint = new cc.Vec2(this.node.x, this.node.y);
 
         this._moveRes = BattleUtils.MOVE_RES.INVALID;
+
+        let heroImg = this._battleManager.getCardImage(this._type, this._level);
+
+        let self = this;
+        if (heroImg) {
+            cc.loader.loadRes(heroImg, cc.SpriteFrame, function (err, spriteFrame) {
+                if (!err) {
+                    self.spHero.spriteFrame = spriteFrame;
+                }
+            })
+        }
     },
 
     //
