@@ -38,7 +38,7 @@ let ExcelParse = {
         var _data_key_line = XLSX.utils.decode_row('1');
 
         // 数据类型所在行
-        var _data_type_line = XLSX.utils.decode_row('3');
+        var _data_type_line = XLSX.utils.decode_row('2');
 
         // 数据开始行
         var _data_begin_line = XLSX.utils.decode_row('4');
@@ -484,13 +484,13 @@ let ExcelParse = {
                     outJson = arrSheetJson[sheetNames[0]]
 
                     if (outJson) {
-                        writeFileAsLua(outdir, outJson);
+                        writeFile(outdir, outJson);
                     }
 
                 }
 
                 if(outJson) {
-                    writeFileAsLua(outdir, outJson);
+                    writeFile(outdir, outJson);
                 }
             }
             catch (e) {

@@ -31,14 +31,14 @@ iTJSUtils.travelDir(excelDir, (file) => {
 
     console.log('---------------' + filename + '---------------');
 
-    let res = excelParse.export2(file, outdir);
+    let res = excelParse.readExcel(file, outdir);
 
-    if (res == 0) {
-        console.log(file + ' export success!');
-    }
-    else {
-        console.log(file + ' export failed. err: ' + res);
-    }
+    // if (res == 0) {
+    //     console.log(file + ' export success!');
+    // }
+    // else {
+    //     console.log(file + ' export failed. err: ' + res);
+    // }
 });
 
 // excelParse.setDataBeginLine(4);

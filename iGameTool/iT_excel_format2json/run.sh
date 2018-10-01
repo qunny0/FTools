@@ -3,8 +3,8 @@
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 cd $DIR
 
-exceldir='/Users/fubei/Documents/git/FTools/games/Levels/configExcel'
-ourdir='/Users/fubei/Documents/git/FTools/games/Levels/assets/resources/config'
+exceldir='../../games/Levels/configExcel'
+ourdir='../../games/Levels/assets/resources/config'
 
 echo $exceldir '->' $ourdir
 
