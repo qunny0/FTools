@@ -1,0 +1,36 @@
+{
+  "pages":[
+    "pages/shop/shop",
+    "pages/logs/logs"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "剁手"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "活动"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "茶些",
+    "navigationBarTextStyle":"black"
+  }
+}

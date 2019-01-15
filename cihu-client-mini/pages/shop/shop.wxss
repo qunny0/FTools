@@ -1,0 +1,47 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+////////////////////////////////////////
+.shopline {
+  width: 100%;
+  height: 40px;
+  background-color: #aaa;
+}
+
+.scrollbanner {
+  width: 100%;
+  height: 120px;
+  background-color: #bac;
+}
+
+.classNav {
+  width: 100%;
+  height: 30px;
+  background-color: #abc;
+}
+
+.goodslist {
+  width: 100%;
+  padding: 0rpx, 0;
+  box-sizing: border-box;
+  background-color: #bbb;
+}
