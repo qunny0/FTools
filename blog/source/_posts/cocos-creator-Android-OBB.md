@@ -56,6 +56,28 @@ adb shell。 进入obb目录下，mkdir创建对应文件夹
     解决方案2：  
         为何从OBB读取音乐文件失败？
 
+2. OBB文件后，进游戏有概率崩溃。
+    ```
+        #00 pc 0117c85c  /data/app/org.cocos2d.helloworld-GGEnXejYbqGdx_F0Z7jSGw==/lib/arm/libcocos2djs.so (inflate+847)
+        #01 pc 01015b3c  /data/app/org.cocos2d.helloworld-GGEnXejYbqGdx_F0Z7jSGw==/lib/arm/libcocos2djs.so (cocos2d::unzReadCurrentFile(void*, void*, unsigned int)+720)
+        #02 pc 00fe9aa8  /data/app/org.cocos2d.helloworld-GGEnXejYbqGdx_F0Z7jSGw==/lib/arm/libcocos2djs.so (cocos2d::ZipFile::getFileData(std::string const&, cocos2d::ResizableBuffer*)+280)
+        #03 pc 003b7107  /data/app/org.cocos2d.helloworld-GGEnXejYbqGdx_F0Z7jSGw==/lib/arm/libcocos2djs.so (cocos2d::FileUtilsAndroid::getContents(std::string const&, cocos2d::ResizableBuffer*)+282)
+        #04 pc 00f9f720  /data/app/org.cocos2d.helloworld-GGEnXejYbqGdx_F0Z7jSGw==/lib/arm/libcocos2djs.so (cocos2d::FileUtils::getDataFromFile(std::string const&)+92)
+        #05 pc 00fab3a0  /data/app/org.cocos2d.helloworld-GGEnXejYbqGdx_F0Z7jSGw==/lib/arm/libcocos2djs.so (cocos2d::Image::initWithImageFile(std::string const&)+136)
+        #06 pc 01007ad4  /data/app/org.cocos2d.helloworld-GGEnXejYbqGdx_F0Z7jSGw==/lib/arm/libcocos2djs.so (cocos2d::TextureCache::loadImage()+260)
+        #07 pc 011b8f9f  /data/app/org.cocos2d.helloworld-GGEnXejYbqGdx_F0Z7jSGw==/lib/arm/libcocos2djs.so
+        #08 pc 000485af  /system/lib/libc.so (__pthread_start(void*)+22)
+        #09 pc 0001b0d1  /system/lib/libc.so (__start_thread+32)
+    ```  
+    从zip中读取文件的时候崩溃，因为读取为非线程安全的，需要增加线程锁。
+    解决方案：
+    ZipUtils.h
+        30  + #include <mutex>
+        293 + std::mutex _ReadMutex;
+    ZipUtils.cpp: getFileData方法开始和结束分别添加：
+        _ReadMutex.lock();
+        _ReadMutex.unlock();
+
 
 ### 0x06 OBB文件下载失败的情况
 1. 经测试，如果同一个文件在APK和OBB中都存在，则会使用OBB中的文件。
